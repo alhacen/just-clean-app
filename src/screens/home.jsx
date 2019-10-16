@@ -1,18 +1,16 @@
 import React, {useState, useEffect} from 'react';
 import {Row, Col, Typography, Card, Button, Icon} from 'antd';
 
-import JobSeeker from "./assets/images/job-seeker.png";
-import JobFinding from "./assets/images/job.png";
-import {selectScreen} from "./helpers/screen.helper";
+import JobSeeker from "../assets/images/job-seeker.png";
+import JobFinding from "../assets/images/job.png";
+import {selectScreen} from "../helpers/screen.helper";
 
-import 'antd/dist/antd.css';
-import './styles/style.css';
-import SignInForm from "./components/signInForm";
+import SignInForm from "../components/signInForm";
 
 
 const {Title, Text} = Typography;
 
-function App() {
+function Home() {
     const [width, setWidth] = useState(window.innerWidth);
 
     useEffect(() => {
@@ -93,4 +91,4 @@ function App() {
     );
 }
 
-export default App;
+export default Home;
