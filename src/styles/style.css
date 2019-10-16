@@ -10,28 +10,35 @@ body {
   font-size: 1.1rem;
   overflow-x: hidden;
 }
-
-
-
 body{
     padding-top: 64px;
-}
-
-#sign-in-form .login-form {
-  max-width: 300px;
-}
-#sign-in-form .login-form-forgot {
-  float: right;
-}
-#sign-in-form .login-form-button {
-  width: 100%;
 }
 
 .loading-screen {
   width: 100vw;
   height: 100vh;
-
   display: flex;
   align-items: center;
   justify-content: center;
+}
+.container {
+  padding: 20px;
+}
+.center-hv {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.center {
+  text-align: center;
+}
+.top-recruiter-col {
+  border-bottom: 1px solid #eeeeee;
+}
+.badge-container {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  flex-direction: row;
+  max-width: 100vw;
 }

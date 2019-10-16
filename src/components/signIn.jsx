@@ -3,7 +3,6 @@ import {Button, Card, Typography} from "antd";
 import SignInForm from "../forms/signIn.form";
 
 const {Title} = Typography;
-
 const SignIn = () => (
     <Card style={{textAlign: 'center'}}>
         <Title level={2} style={{marginBottom: 0}}>
