@@ -1,5 +1,5 @@
 import React from "react";
-import {Form, Icon, Input, Button, Checkbox} from 'antd';
+import {Form, Icon, Input, Button} from 'antd';
 
 class SignInForm extends React.Component {
     handleSubmit = e => {
@@ -38,12 +38,13 @@ class SignInForm extends React.Component {
                     )}
                 </Form.Item>
                 <Form.Item>
-                    <a className="login-form-forgot" href="">
+                    <a className="login-form-forgot" href="#!">
                         Forgot password
                     </a>
                     <Button type="primary" htmlType="submit" className="login-form-button">
                         Sign In
                     </Button>
+
                 </Form.Item>
             </Form>
         );
