@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import {Row, Col, Typography, Card, Button, Icon} from 'antd';
 
-import JobSeeker from "./assets/images/job-seeker.jpg";
+import JobSeeker from "./assets/images/job-seeker.png";
 import JobFinding from "./assets/images/job.png";
 import {selectScreen} from "./helpers/screen.helper";
 
@@ -41,7 +41,7 @@ function App() {
                         {/*<img src={JamiaLogo} alt='University Placement Cell, Logo' />*/}
                         &nbsp;&nbsp;&nbsp;
                         <div>
-                            <Text strong style={{color: "#90BAE6"}}>
+                            <Text strong style={{color: "#0689FF"}}>
                                 JustCleanRojgar.in
                             </Text>
                             <div style={{fontSize: '0.75rem'}}>
@@ -54,23 +54,13 @@ function App() {
                     </Col>
                 </Row>
             </header>
-            <Row style={{background: "#90BAE6", padding: 20}}>
-                <Col xs={24} style={{textAlign: 'center'}}>
-                    {/*<Title>*/}
-                    {/*    CONNECTING EVERY JOB SEEKER WITH OPPORTUNITIES*/}
-                    {/*</Title>*/}
-                    <Title level={2}>
-                        भारत के हर नागरिक को रोज़गार के अवसर
-                    </Title>
-                </Col>
-            </Row>
             <Row>
                 <Col xs={24}>
                     <div style={{position: 'relative'}}>
                         <img src={JobSeeker} alt="Job seeker" className="job-seeker-image"/>
                         <Row style={{position: 'absolute', top: 0, right: 0, width: '100%', opacity: 0.975}}>
                             <Col xs={24} md={8} style={{padding: 20, float: 'right'}}>
-                                <Card bordered={false} style={{textAlign: 'center'}}>
+                                <Card style={{textAlign: 'center'}}>
                                     <Title level={2} style={{marginBottom: 0}}>
                                         Sign In
                                     </Title>
@@ -78,25 +68,23 @@ function App() {
                                     <br/>
                                     <br/>
                                     <SignInForm/>
+
+                                    <div style={{display: 'flex', justifyContent: 'space-between', width: '100%'}}>
+                                        <Button size='large' icon='file-search'>
+                                            Finding a job?
+                                        </Button>
+                                        <Button size='large' icon='usergroup-add'>
+                                            Want to hire?
+                                        </Button>
+                                    </div>
                                 </Card>
-
-                                <br/>
-
-                                <div style={{display: 'flex', justifyContent: 'space-between', width: '100%'}}>
-                                    <Button size='large' icon='file-search'>
-                                        Finding a job?
-                                    </Button>
-                                    <Button size='large' icon='usergroup-add'>
-                                        Want to hire?
-                                    </Button>
-                                </div>
                             </Col>
                         </Row>
                     </div>
                 </Col>
             </Row>
 
-            <Row style={{background: "#90BAE6", padding: 40}}>
+            <Row style={{padding: 40}}>
                 <Col xs={24}>
 
                 </Col>
