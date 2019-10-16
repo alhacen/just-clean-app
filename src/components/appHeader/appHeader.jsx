@@ -1,6 +1,6 @@
 import React from "react";
 import {Col, Row, Typography} from "antd";
-import {selectScreen} from "../helpers/screen.helper";
+import {selectScreen} from "../../helpers/screen.helper";
 
 const {Text} = Typography;
 
@@ -13,7 +13,6 @@ const AppHeader = () => (
                 xxl={4}
                 className='logo-container'
                 style={{justifyContent: selectScreen('center', 'center', null)}}>
-                {/*<img src={JamiaLogo} alt='University Placement Cell, Logo' />*/}
                 &nbsp;&nbsp;&nbsp;
                 <div>
                     <Text strong style={{color: "#0689FF"}}>

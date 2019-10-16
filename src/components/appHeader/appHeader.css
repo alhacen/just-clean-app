@@ -1,0 +1,26 @@
+header {
+  box-shadow: 0 2px 8px #f0f1f2;
+  height: 64px;
+  width: 100vw;
+
+  padding-left: 40px;
+  padding-right: 40px;
+
+  display: flex;
+  align-items: center;
+
+  z-index: 2;
+  position: fixed;
+  top: 0;
+  transition: top 0.3s;
+
+  background-color: #ffffff;
+}
+
+header .logo-container {
+  display: flex;
+  align-items: center;
+  height: 40px;
+  margin-top: 12px;
+  margin-bottom: 12px;
+}
