@@ -1,6 +1,6 @@
 import {FORM_ELEMENT} from 'constants/formFields.constant';
 
-export const signUpEmployerTForm = () => [
+export const employerSignUpTForm = () => [
   {
     label: 'Company Name',
     name: 'company_name',
@@ -27,7 +27,7 @@ export const signUpEmployerTForm = () => [
     kwargs: {
       placeholder: 'ex: Delhi',
     },
-    type: FORM_ELEMENT.INPUT,
+    type: FORM_ELEMENT.TEXTAREA,
     rules: [
       {required: true},
     ],
@@ -36,41 +36,6 @@ export const signUpEmployerTForm = () => [
     label: 'Contact Person Name',
     name: 'contact_person_name',
     type: FORM_ELEMENT.INPUT,
-    rules: [{required: true}],
-  },
-  {
-    label: 'Number',
-    name: 'phone_number',
-    type: FORM_ELEMENT.INPUT,
-    rules: [{required: true}, {pattern: /^\d{10}$/, message: 'Not a Valid Indian Phone Number'}],
-    kwargs: {
-      addonBefore: '+91',type: FORM_ELEMENT.SELECT,
-    rules: [{required: true}],
-    options: {
-      '1': '1st year',
-      '2': '2nd year',
-      '3': '3rd year',
-      '4': '4th year',
-      '5': '5th year',
-    },
-    },
-  },
-   {
-    label: 'Contact Person Email',
-    name: 'contact_person_mail',
-    type: FORM_ELEMENT.INPUT,
-    rules: [{required: true}],
-  },
-  {
-    label: 'Contact Person Name',
-    name: 'contact_person_name',
-    type: FORM_ELEMENT.INPUT,
-    rules: [{required: true}],
-  },
-  {
-    label: 'Password',
-    name: 'password',
-    type: FORM_ELEMENT.PASSWORD,
     rules: [{required: true}],
   },
   {

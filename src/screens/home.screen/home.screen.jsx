@@ -33,7 +33,7 @@ function HomeScreen() {
                     <Title style={{margin: 0, color: '#F89A51'}}>
                         Just Clean Rojgar
                     </Title>
-                    <Text style={{margin: 0}} disabled>
+                    <Text style={{margin: 0}}>
                         CONNECTING EVERY JOB SEEKER WITH OPPORTUNITIES
                     </Text>
                 </Col>
