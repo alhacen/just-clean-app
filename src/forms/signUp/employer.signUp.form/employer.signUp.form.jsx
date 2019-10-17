@@ -1,18 +1,19 @@
 import React from 'react';
 
 import FormCreator from 'components/formCreator';
-import {signUpEmployerTForm} from './signUp.employer.tForm';
+import {employerSignUpTForm} from 'forms/signUp/employer.signUp.form/employer.signUp.tForm';
 
 
-const SignUpEmployerForm = () => {
+const EmployerSignUpForm = ({next}) => {
     const form = (
         // @ts-ignore
         <FormCreator
-            formTemplate={signUpEmployerTForm}
+            formTemplate={employerSignUpTForm}
 
             buttonType='block'
             submitButtonText='Next'
             onSubmit={(objForm) => {
+                next()
             }}
         />
     );
@@ -24,4 +25,4 @@ const SignUpEmployerForm = () => {
     );
 };
 
-export default SignUpEmployerForm;
+export default EmployerSignUpForm;

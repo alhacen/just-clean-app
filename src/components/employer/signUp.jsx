@@ -1,19 +1,10 @@
 import React from 'react';
-import {Card, Typography} from 'antd';
-import SignUpEmployerForm from 'forms/employer/signUp.employer.form/signUp.employer.form';
+import EmployerSignUpForm from 'forms/signUp/employer.signUp.form';
+import SignUpCard from 'components/signUpCard';
 
 
-const {Title} = Typography;
-const SignUpCard = () => (
-    <Card style={{textAlign: 'center'}}>
-        <Title level={2} style={{marginBottom: 0}}>
-            Sign Up
-        </Title>
-        to find a job
-        <br/>
-        <br/>
-        <SignUpEmployerForm/>
-    </Card>
+const EmployerSignUpCard = () => (
+    <SignUpCard subTitle='to hire?' component={EmployerSignUpForm}/>
 );
 
-export default SignUpCard;
+export default EmployerSignUpCard;

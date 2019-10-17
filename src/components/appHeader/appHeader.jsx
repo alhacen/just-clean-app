@@ -24,7 +24,7 @@ const AppHeader = () => (
                             JustCleanRojgar.in
                         </Text>
                         <div>
-                            <Text disabled style={{fontSize: '0.75rem'}}>
+                            <Text style={{fontSize: '0.75rem'}}>
                                 Connecting 20 Crore Indian to Employment
                             </Text>
                         </div>

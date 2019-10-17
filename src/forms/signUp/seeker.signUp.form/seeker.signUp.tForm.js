@@ -1,6 +1,6 @@
 import {FORM_ELEMENT} from 'constants/formFields.constant';
 
-export const signUpSeekerTForm = () => [
+export const seekerSignUpTForm = () => [
     {
         label: 'Name',
         name: 'candidate_name',
@@ -26,22 +26,5 @@ export const signUpSeekerTForm = () => [
                 message: 'Not valid aadhar number',
             },
         ],
-    }, {
-        label: 'Phone Number',
-        name: 'phone_no',
-        type: FORM_ELEMENT.INPUT,
-        rules: [{required: true}, {pattern: /^\d{10}$/, message: 'Not a Valid Indian Phone Number'}],
-        kwargs: {
-            addonBefore: '+91',
-        },
-    },
-    {
-        label: 'Alternate number',
-        name: 'alternate_mobile_no',
-        type: FORM_ELEMENT.INPUT,
-        rules: [{pattern: /^\d{10}$/, message: 'Not a Valid Indian Phone Number'}],
-        kwargs: {
-            addonBefore: '+91',
-        },
-    },
+    }
 ];
