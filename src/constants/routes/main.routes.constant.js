@@ -4,6 +4,8 @@ import {
   SIGN_IN_PATH,
   EMPLOYER_SIGNUP_PATH,
   EMPLOYER_HOME_PATH,
+  EMPLOYER_JOB_APPLICATION_PATH,
+  EMPLOYER_APPLIED_SEEKER_PROFILE_PATH,
   SEEKER_HOME_PATH,
   SEEKER_JOB_AVAILABLE_PATH,
   SEEKER_JOB_RECRUITMENT_DETAILS_PATH
@@ -27,10 +29,21 @@ export const COMMON_ROUTES = [
   path: EMPLOYER_HOME_PATH,
     title: 'Home employer',
     screen: lazy(() => import('screens/employer/home.employer')),
-  }, {
+  },
+  {
+  path: EMPLOYER_JOB_APPLICATION_PATH,
+    title: 'job applications',
+    screen: lazy(() => import('screens/employer/jobApplicaiton.employer')),
+  },
+  {
   path: EMPLOYER_SIGNUP_PATH,
     title: 'Sign Up and Hire',
     screen: lazy(() => import('screens/employer/signUp.screen')),
+  },
+  {
+  path: EMPLOYER_APPLIED_SEEKER_PROFILE_PATH,
+    title: 'Seeker Profile',
+    screen: lazy(() => import('screens/employer/appliedSeekerProfile.employer')),
   },
   {
   path: SEEKER_HOME_PATH,
