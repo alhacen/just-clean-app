@@ -4,7 +4,7 @@ import {Link} from 'react-router-dom';
 import Fade from 'react-reveal/Fade';
 
 import SignInForm from 'forms/signIn.form';
-import {SEEKER_SIGNUP_PATH} from 'constants/routes/main.paths.constant';
+import {SEEKER_SIGNUP_PATH,EMPLOYER_SIGNUP_PATH} from 'constants/routes/main.paths.constant';
 
 const {Title} = Typography;
 const SignInCard = () => (
@@ -23,9 +23,11 @@ const SignInCard = () => (
                     Finding a job?
                 </Button>
             </Link>
-            <Button size='large' icon='usergroup-add'>
-                Want to hire?
-            </Button>
+            <Link to={EMPLOYER_SIGNUP_PATH}>
+                <Button size='large' icon='usergroup-add'>
+                    Want to hire?
+                </Button>
+            </Link>
         </div>
     </Card>
 );
