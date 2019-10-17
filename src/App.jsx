@@ -8,7 +8,7 @@ import rootReducer from './reducers';
 import Main from './main';
 
 import 'antd/dist/antd.min.css';
-import './styles/style.css';
+import 'App.css';
 
 export const store = createStore(rootReducer, applyMiddleware(thunk));
 

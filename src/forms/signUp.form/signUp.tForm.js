@@ -1,8 +1,4 @@
-import {COURSES, FORM_ELEMENT} from '../constants/formFields.constant';
-import {get} from '../helpers/function.helper';
-// eslint-disable-next-line import/named
-import {allCoursesOption} from '../constants/allOfferedCourses';
-import {getCourse} from '../helpers/courses';
+import {FORM_ELEMENT} from 'constants/formFields.constant';
 
 export const basicSignUpTForm = () => [
   {
@@ -43,8 +39,6 @@ export const basicSignUpTForm = () => [
         message: 'Not valid Student ID, normally Student ID is of 8 or 9 digit',
       },
     ],
-  },
-  {
   },
   {
     label: 'Year',

@@ -2,13 +2,13 @@ import React, {Suspense} from 'react';
 import {connect} from 'react-redux';
 import {Route, Switch, withRouter} from 'react-router-dom';
 
-import LoadingScreen from './screens/loading.screen';
-import NotFoundScreen from './screens/404.screen';
-import AppHeader from './components/appHeader';
-import Screen from './components/screen';
-import Footer from './components/footer';
+import LoadingScreen from 'screens/loading.screen';
+import NotFoundScreen from 'screens/404.screen';
+import AppHeader from 'components/appHeader';
+import Screen from 'components/screen';
+import Footer from 'components/footer';
 
-import {COMMON_ROUTES} from "./constants/routes/main.routes.constant";
+import {COMMON_ROUTES} from "constants/routes/main.routes.constant";
 
 
 const Main = () => {

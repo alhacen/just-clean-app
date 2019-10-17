@@ -1,14 +1,17 @@
 import React, {useEffect} from 'react';
+import Fade from 'react-reveal/Fade';
 
 
 const Screen = ({title, screen: ScreenComponent}) => {
-  useEffect(() => {
-    document.title = `${title} || Just Clean Rojgar`;
-  }, [title]);
+    useEffect(() => {
+        document.title = `${title} || Just Clean Rojgar`;
+    }, [title]);
 
-  return (
-    <ScreenComponent />
-  );
+    return (
+        <Fade>
+            <ScreenComponent/>
+        </Fade>
+    );
 };
 
 export default Screen;

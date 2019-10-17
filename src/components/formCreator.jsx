@@ -12,21 +12,12 @@ import {
   Upload,
   Radio,
   InputNumber,
-  Row,
-  Col,
   Switch,
   Cascader,
 } from 'antd';
 import {connect} from 'react-redux';
 
-//import SimpleMDE from 'react-simplemde-editor';
-//import {FORM_ELEMENT} from '../constants/formFields.constant';
-
-import 'easymde/dist/easymde.min.css';
-//import {openNotificationWithIcon} from '../helpers/notification.helper';
-//import ReCAPTCHA from 'react-google-recaptcha';
-//import {GOOGLE_RECAPTCHA_KEY} from '../constants/credentials.constant';
-//import {getFileHandlerURL, removeFileFromServer} from '../helpers/api/file.api.helper';
+import {FORM_ELEMENT} from '../constants/formFields.constant';
 
 const {MonthPicker, RangePicker} = DatePicker;
 
