@@ -1,6 +1,6 @@
 import {FORM_ELEMENT} from 'constants/formFields.constant';
 
-export const basicSignUpTForm = () => [
+export const signUpEmployerTForm = () => [
   {
     label: 'Company Name',
     name: 'company_name',

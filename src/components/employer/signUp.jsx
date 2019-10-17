@@ -1,6 +1,6 @@
 import React from 'react';
 import {Card, Typography} from 'antd';
-import SignUpForm from 'forms/employer/signUp.employer.form/signUp.form';
+import SignUpEmployerForm from 'forms/employer/signUp.employer.form/signUp.employer.form';
 
 
 const {Title} = Typography;
@@ -12,7 +12,7 @@ const SignUpCard = () => (
         to find a job
         <br/>
         <br/>
-        <SignUpForm/>
+        <SignUpEmployerForm/>
     </Card>
 );
 

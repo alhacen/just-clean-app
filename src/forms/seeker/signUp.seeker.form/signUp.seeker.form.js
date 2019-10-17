@@ -1,14 +1,14 @@
 import React from 'react';
 
 import FormCreator from 'components/formCreator';
-import {basicSignUpTForm} from 'forms/seeker/signUp.seeker.form/signUp.seeker.tForm';
+import {signUpSeekerTForm} from 'forms/seeker/signUp.seeker.form/signUp.seeker.tForm';
 
 
 const SignUpSeekerForm = () => {
   const form = (
     // @ts-ignore
     <FormCreator
-      formTemplate={basicSignUpTForm}
+      formTemplate={signUpSeekerTForm}
 
       buttonType='block'
       submitButtonText='Next'
