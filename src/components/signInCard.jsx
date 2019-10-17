@@ -1,7 +1,6 @@
 import React from 'react';
 import {Button, Card, Typography} from 'antd';
 import {Link} from 'react-router-dom';
-import Fade from 'react-reveal/Fade';
 
 import SignInForm from 'forms/signIn.form';
 import {SEEKER_SIGNUP_PATH} from 'constants/routes/main.paths.constant';

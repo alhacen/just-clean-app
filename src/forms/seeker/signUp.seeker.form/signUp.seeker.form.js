@@ -1,13 +1,10 @@
 import React from 'react';
-import {Typography} from 'antd';
 
 import FormCreator from 'components/formCreator';
-import {basicSignUpTForm} from './signUp.tForm';
+import {basicSignUpTForm} from 'forms/seeker/signUp.seeker.form/signUp.seeker.tForm';
 
 
-const {Title} = Typography;
-
-const SignUpForm = () => {
+const SignUpSeekerForm = () => {
   const form = (
     // @ts-ignore
     <FormCreator
@@ -27,4 +24,4 @@ const SignUpForm = () => {
   );
 };
 
-export default SignUpForm;
+export default SignUpSeekerForm;

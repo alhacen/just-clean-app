@@ -20,11 +20,13 @@ const AppHeader = () => (
                 >
                     &nbsp;&nbsp;&nbsp;
                     <div>
-                        <Text strong style={{color: '#F89A51'}}>
+                        <Text strong>
                             JustCleanRojgar.in
                         </Text>
-                        <div style={{fontSize: '0.75rem'}}>
-                            Connecting 20 Crore Indian to Employment
+                        <div>
+                            <Text disabled style={{fontSize: '0.75rem'}}>
+                                Connecting 20 Crore Indian to Employment
+                            </Text>
                         </div>
                     </div>
                 </Col>
