@@ -8,6 +8,7 @@ const columns = [
         title: 'Title',
         dataIndex: 'title',
         key: 'title',
+        render: text => <Link to='job-applications'>{text}</Link>,
     },
     {
         title: 'Next Round',
@@ -20,10 +21,16 @@ const columns = [
         key: 'round',
     },
     {
-        title: 'Selected students',
+        title: 'Applied Seekers',
         dataIndex: 'selected',
         key: 'selected',
     },
+    {
+        title: 'Selected Seekers',
+        dataIndex: 'selected',
+        key: 'selected',
+    },
+
 ];
 
 
@@ -37,7 +44,7 @@ const HomeEmployer = () => {
             </Link>
             <br />
             <br />
-            <Table columns={columns} dataSource={[]} />
+            <Table columns={columns} dataSource={[{title:"React Developer"}]} />
         </div>
     )};
 
