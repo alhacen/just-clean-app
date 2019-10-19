@@ -4,7 +4,7 @@ import FormCreator from 'components/formCreator';
 import {otpSignUpTForm} from './otp.signUp.tForm';
 
 
-const OtpSignUpForm = () => {
+const OtpSignUpForm = ({setData, next, data}) => {
     const form = (
         // @ts-ignore
         <FormCreator
@@ -12,6 +12,11 @@ const OtpSignUpForm = () => {
             buttonType='block'
             submitButtonText='Next'
             onSubmit={(objForm) => {
+                setData({
+                    ...data,
+                    ...objForm.getFieldsValue()
+                });
+                next();
             }}
         />
     );

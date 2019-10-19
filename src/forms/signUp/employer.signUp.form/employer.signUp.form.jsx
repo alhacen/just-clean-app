@@ -4,7 +4,7 @@ import FormCreator from 'components/formCreator';
 import {employerSignUpTForm} from 'forms/signUp/employer.signUp.form/employer.signUp.tForm';
 
 
-const EmployerSignUpForm = ({next}) => {
+const EmployerSignUpForm = ({next, data, setData}) => {
     const form = (
         // @ts-ignore
         <FormCreator
@@ -13,6 +13,10 @@ const EmployerSignUpForm = ({next}) => {
             buttonType='block'
             submitButtonText='Next'
             onSubmit={(objForm) => {
+                setData({
+                    ...data,
+                    ...objForm.getFieldsValue()
+                });
                 next()
             }}
         />

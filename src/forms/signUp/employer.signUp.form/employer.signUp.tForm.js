@@ -13,13 +13,15 @@ export const employerSignUpTForm = () => [
   {
     label: 'Employers Type',
     name: 'employer_type',
-    kwargs: {
-      placeholder: 'ex: ',
-    },
-    type: FORM_ELEMENT.INPUT,
+    type: FORM_ELEMENT.SELECT,
     rules: [
       {required: true},
     ],
+    options: {
+      I: 'Individual',
+      P: 'Proprietorship',
+      L: 'Pvt. Ltd.'
+    }
   },
   {
     label: 'Address',

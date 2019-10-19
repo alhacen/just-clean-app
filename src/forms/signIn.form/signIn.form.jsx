@@ -1,12 +1,14 @@
-import React from "react";
-import {Form, Icon, Input, Button} from 'antd';
+import React from 'react';
+import {Form, Icon, Input, Button, notification} from 'antd';
+import {sendOTP} from 'helpers/api/seeker.api.helper';
+
 
 class SignInForm extends React.Component {
     handleSubmit = e => {
         e.preventDefault();
-        this.props.form.validateFields((err, values) => {
+        this.props.form.validateFields(async (err, values) => {
             if (!err) {
-                console.log('Received values of form: ', values);
+                this.props.signIn(values.username, values.password);
             }
         });
     };
@@ -22,6 +24,15 @@ class SignInForm extends React.Component {
                         <Input
                             prefix={<Icon type="user" style={{color: 'rgba(0,0,0,.25)'}}/>}
                             placeholder="Phone / Email"
+                            onBlur={async () => {
+                                try {
+                                    await sendOTP(this.props.form.getFieldValue('username'));
+                                } catch (e) {
+                                    notification.error({
+                                        message: 'The email or phone number does not exist'
+                                    })
+                                }
+                            }}
                         />,
                     )}
                 </Form.Item>
@@ -33,7 +44,6 @@ class SignInForm extends React.Component {
                             prefix={<Icon type="lock" style={{color: 'rgba(0,0,0,.25)'}}/>}
                             type="password"
                             placeholder="OTP / Password"
-                            disabled
                         />,
                     )}
                 </Form.Item>

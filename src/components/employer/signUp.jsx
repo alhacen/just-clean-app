@@ -4,7 +4,7 @@ import SignUpCard from 'components/signUpCard';
 
 
 const EmployerSignUpCard = () => (
-    <SignUpCard subTitle='to hire?' component={EmployerSignUpForm}/>
+    <SignUpCard subTitle='to hire?' component={EmployerSignUpForm} type='EMPLOYER'/>
 );
 
 export default EmployerSignUpCard;

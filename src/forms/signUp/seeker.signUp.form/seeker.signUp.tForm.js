@@ -10,6 +10,7 @@ export const seekerSignUpTForm = () => [
         label: 'Father\'s Name',
         name: 'father_name',
         type: FORM_ELEMENT.INPUT,
+        rules: [{required: true},],
     }, {
         label: 'Address',
         name: 'address',
@@ -17,7 +18,7 @@ export const seekerSignUpTForm = () => [
         rules: [{required: true},],
     }, {
         label: 'Aadhar Number',
-        name: 'aadhar',
+        name: 'adhaar_no',
         type: FORM_ELEMENT.INPUT,
         rules: [
             {required: true},

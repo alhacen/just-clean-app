@@ -17,10 +17,11 @@ export const otpSignUpTForm = () => [
         kwargs: {
             addonBefore: '+91',
         },
-    }, {
-        label: 'One Time Password',
-        name: 'otp',
-        type: FORM_ELEMENT.INPUT,
-        rules: [{required: true}, {pattern: /^\d{6}$/, message: 'Enter 6 digit OTP'}],
-    }
+    },
+    // {
+    //     label: 'One Time Password',
+    //     name: 'otp',
+    //     type: FORM_ELEMENT.INPUT,
+    //     rules: [{required: true}, {pattern: /^\d{6}$/, message: 'Enter 6 digit OTP'}],
+    // }
 ];

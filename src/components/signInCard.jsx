@@ -1,34 +1,49 @@
 import React from 'react';
 import {Button, Card, Typography} from 'antd';
+import {signIn} from 'actions/auth.action';
+import {connect} from 'react-redux';
 import {Link} from 'react-router-dom';
 
 import SignInForm from 'forms/signIn.form';
 import {SEEKER_SIGNUP_PATH,EMPLOYER_SIGNUP_PATH} from 'constants/routes/main.paths.constant';
 
 const {Title} = Typography;
-const SignInCard = () => (
-    <Card style={{textAlign: 'center'}}>
-        <Title level={2} style={{marginBottom: 0}}>
-            Sign In
-        </Title>
-        to continue
-        <br/>
-        <br/>
-        <SignInForm/>
+const SignInCard = ({signIn: signInAction, isAuthenticated}) => {
+    if(isAuthenticated)
+        return null;
 
-        <div style={{display: 'flex', justifyContent: 'space-between', width: '100%', flexWrap: 'wrap'}}>
-            <Link to={SEEKER_SIGNUP_PATH}>
-                <Button size='large' icon='file-search' type='primary'>
-                    Finding a job?
-                </Button>
-            </Link>
-            <Link to={EMPLOYER_SIGNUP_PATH}>
-                <Button size='large' icon='usergroup-add'>
-                    Want to hire?
-                </Button>
-            </Link>
-        </div>
-    </Card>
-);
+    return (
+        <Card style={{textAlign: 'center'}}>
+            <Title level={2} style={{marginBottom: 0}}>
+                Sign In
+            </Title>
+            to continue
+            <br/>
+            <br/>
+            <SignInForm signIn={signInAction} />
 
-export default SignInCard;
+            <div style={{display: 'flex', justifyContent: 'space-between', width: '100%', flexWrap: 'wrap'}}>
+                <Link to={SEEKER_SIGNUP_PATH}>
+                    <Button size='large' icon='file-search' type='primary'>
+                        Finding a job?
+                    </Button>
+                </Link>
+                <Link to={EMPLOYER_SIGNUP_PATH}>
+                    <Button size='large' icon='usergroup-add'>
+                        Want to hire?
+                    </Button>
+                </Link>
+            </div>
+        </Card>
+    );
+};
+
+
+const mapStateToProps = (state) => ({
+    isAuthenticated: state.auth.isAuthenticated
+});
+const mapDispatchToProps = (dispatch) => ({
+    signIn: (username, password) => dispatch(signIn(username, password))
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(SignInCard);

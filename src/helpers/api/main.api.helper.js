@@ -1,22 +1,17 @@
 import axios from 'axios';
-// @ts-ignore
 import {reactLocalStorage} from 'reactjs-localstorage';
 
-import {API_TOKENS} from 'constants/localStorage.constant';
-import {IAccessToken} from 'types/api.type';
-import {IObject} from 'types/common.type';
-import {API_BASE_URL} from 'constants/credentials.constant';
-import {
-  signInAgainNotification,
-  errorGettingUserInfoNotification,
-} from 'helpers/notification.helper';
-
+const API_TOKENS = 'API_TOKENS';
+const API_BASE_URL = 'http://10.66.27.97:8000/';
 axios.defaults.baseURL = API_BASE_URL;
 axios.defaults.headers.get['Content-Type'] = 'application/x-www-form-urlencoded';
 
 const REFRESH_ACCESS_TOKEN = 'auth/token/refresh/';
 
-export const loadOpenUrl = async (url: string, config: IObject = {}): Promise<any> => {
+const signInAgainNotification = () => {};
+const errorGettingUserInfoNotification = () => {};
+
+export const loadOpenUrl = async (url, config = {}) => {
   return new Promise((resolve, reject) => {
     axios(url, config)
       .then(res => resolve(res.data))
@@ -39,7 +34,7 @@ const getAccessToken = () => {
       accessToken = data.tokens.access;
     } else {
       try {
-        const newToken: IAccessToken = await loadOpenUrl(REFRESH_ACCESS_TOKEN, {
+        const newToken = await loadOpenUrl(REFRESH_ACCESS_TOKEN, {
           method: 'post',
           data: {
             refresh: data.tokens.refresh,
@@ -70,7 +65,7 @@ const getAccessToken = () => {
   });
 };
 
-export const loadSecureUrl = (url: string, config: IObject = {}): Promise<any> => {
+export const loadSecureUrl = (url, config = {}) => {
   // eslint-disable-next-line no-async-promise-executor
   return new Promise(async (resolve, reject) => {
     try {
@@ -86,3 +81,11 @@ export const loadSecureUrl = (url: string, config: IObject = {}): Promise<any> =
     }
   });
 };
+
+export const signIn = (username, password) => loadOpenUrl('/jwt/api/token/', {
+  method: 'POST',
+  data: {
+    username,
+    password
+  }
+});
