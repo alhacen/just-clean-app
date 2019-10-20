@@ -31,3 +31,35 @@ video.responsive-video {
 .full-page {
   min-height: calc(100vh - 64px);
 }
+
+
+.collapse-button {
+  position: absolute;
+  bottom: 0;
+  text-align: center;
+  background-color: black;
+  color: #ffffff;
+  padding: 10px;
+  width: 100%;
+}
+
+.collapse-button-mobile {
+  padding: 10px;
+  width: 50px;
+  height: 50px;
+  border-radius: 25px;
+  position: fixed !important;
+  bottom: 10px;
+  right: 10px;
+  z-index: 2 !important;
+  background-color: #ffffff;
+  box-shadow: 2px 0 8px rgba(0, 0, 0, 0.15);
+  font-size: 22px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.portal .ant-menu-submenu-popup {
+  left: 0 !important;
+}

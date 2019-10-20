@@ -1,5 +1,5 @@
 import React from 'react';
-import {Form, Icon, Input, Button, notification} from 'antd';
+import {Form, Icon, Input, Button, notification, Radio} from 'antd';
 import {sendOTP} from 'helpers/api/seeker.api.helper';
 
 
@@ -8,15 +8,29 @@ class SignInForm extends React.Component {
         e.preventDefault();
         this.props.form.validateFields(async (err, values) => {
             if (!err) {
-                this.props.signIn(values.username, values.password);
+                this.props.signIn(values.username, values.password, values.type);
             }
         });
     };
 
     render() {
-        const {getFieldDecorator} = this.props.form;
+        const {getFieldDecorator, getFieldValue} = this.props.form;
         return (
             <Form onSubmit={this.handleSubmit} className="login-form" id='sign-in-form'>
+                <Form.Item>
+                    {getFieldDecorator('type', {
+                        initialValue: 'O',
+                    })(
+                        <div>
+                            Sign In With:
+                            &nbsp;&nbsp;&nbsp;
+                            <Radio.Group defaultValue='O'>
+                                <Radio value='O'>Otp</Radio>
+                                <Radio value='P'>Password</Radio>
+                            </Radio.Group>
+                        </div>
+                    )}
+                </Form.Item>
                 <Form.Item>
                     {getFieldDecorator('username', {
                         rules: [{required: true, message: 'Please input your username!'}],
@@ -26,10 +40,22 @@ class SignInForm extends React.Component {
                             placeholder="Phone / Email"
                             onBlur={async () => {
                                 try {
-                                    await sendOTP(this.props.form.getFieldValue('username'));
+                                    const username = getFieldValue('username');
+                                    const type = getFieldValue('type');
+                                    console.log({
+                                        type,
+                                        username
+                                    });
+                                    if (username && username.length > 0 && type === 'O') {
+                                        const data = await sendOTP(this.props.form.getFieldValue('username'));
+                                        notification.success({
+                                            message: data.detail
+                                        })
+                                    }
                                 } catch (e) {
+                                    console.log(e);
                                     notification.error({
-                                        message: 'The email or phone number does not exist'
+                                        message: e.data.detail
                                     })
                                 }
                             }}

@@ -1,4 +1,4 @@
-import React, {Suspense} from 'react';
+import React, {Suspense, useEffect} from 'react';
 import {connect} from 'react-redux';
 import {Route, Switch, withRouter} from 'react-router-dom';
 
@@ -8,13 +8,18 @@ import AppHeader from 'components/appHeader';
 import Screen from 'components/screen';
 import Footer from 'components/footer';
 
-import {COMMON_ROUTES} from "constants/routes/main.routes.constant";
+import {COMMON_ROUTES} from 'constants/routes/main.routes.constant';
+import {checkUserAction} from 'actions/auth.action';
 
 
-const Main = () => {
+const Main = ({checkUser}) => {
+    useEffect(() => {
+        checkUser();
+    });
+
     return (
         <Suspense fallback={<LoadingScreen/>}>
-            <AppHeader />
+            <AppHeader/>
             <main>
                 <Switch>
                     {COMMON_ROUTES.map((route, index) => (
@@ -35,7 +40,9 @@ const Main = () => {
 
 const mapStateToProps = (state) => ({});
 
-const mapDispatchToProps = (dispatch) => ({});
+const mapDispatchToProps = (dispatch) => ({
+    checkUser: () => dispatch(checkUserAction())
+});
 
 export default connect(
     mapStateToProps,

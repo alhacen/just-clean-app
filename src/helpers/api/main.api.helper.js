@@ -2,7 +2,8 @@ import axios from 'axios';
 import {reactLocalStorage} from 'reactjs-localstorage';
 
 const API_TOKENS = 'API_TOKENS';
-const API_BASE_URL = 'http://10.66.27.97:8000/';
+const API_BASE_URL = 'http://localhost:8000/';
+
 axios.defaults.baseURL = API_BASE_URL;
 axios.defaults.headers.get['Content-Type'] = 'application/x-www-form-urlencoded';
 
@@ -82,10 +83,21 @@ export const loadSecureUrl = (url, config = {}) => {
   });
 };
 
-export const signIn = (username, password) => loadOpenUrl('/jwt/api/token/', {
+
+export const signInWithOtp = (username, otp) => loadOpenUrl('/auth/sign-in/otp/', {
+  method: 'POST',
+  data: {
+    username,
+    otp
+  }
+});
+
+export const signInWithPassword = (username, password) => loadOpenUrl('/auth/sign-in/password/', {
   method: 'POST',
   data: {
     username,
     password
   }
 });
+
+export const userMeta = () => loadSecureUrl('/auth/meta/');

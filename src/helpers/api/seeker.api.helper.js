@@ -8,9 +8,9 @@ export const seekerSignUp = (data) => loadOpenUrl(SEEKER_SIGNUP, {
 });
 
 
-export const sendOTP = (phone) => loadOpenUrl('/seeker/mobile/', {
+export const sendOTP = (username) => loadOpenUrl('auth/sign-in/otp/send/', {
     data: {
-        mobile_no: phone
+        username: username
     },
     method: 'POST'
 });
