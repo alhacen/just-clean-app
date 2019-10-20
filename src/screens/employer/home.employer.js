@@ -9,7 +9,7 @@ const columns = [
         title: 'Title',
         dataIndex: 'title',
         key: 'title',
-        render: text => <Link to='/applications/'>{text}</Link>,
+        render: (text, col) => <Link to={`/applications/${col.id}/`}>{text}</Link>,
     }, {
         title: 'Location',
         dataIndex: 'location',
