@@ -64,5 +64,9 @@ export const EMPLOYER_COMMON_ROUTES = [
 ];
 
 export const EMPLOYER_EXTRA_ROUTES = [
-
+{
+        path: '/job/add/',
+        title: 'Add job applications',
+        screen: lazy(() => import('screens/employer/addApplication')),
+    },
 ];

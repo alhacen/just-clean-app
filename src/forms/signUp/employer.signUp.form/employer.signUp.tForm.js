@@ -1,4 +1,5 @@
 import {FORM_ELEMENT} from 'constants/formFields.constant';
+import {stateChoices} from 'constants/choices';
 
 export const employerSignUpTForm = () => [
     {
@@ -63,8 +64,6 @@ export const employerSignUpTForm = () => [
         name: 'state',
         type: FORM_ELEMENT.SELECT,
         rules: [{required: true}],
-        options: {
-            'National Capital Territory of Delhi': 'National Capital Territory of Delhi'
-        },
+        options: stateChoices,
     },
 ];

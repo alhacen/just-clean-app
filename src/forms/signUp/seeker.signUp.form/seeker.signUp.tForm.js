@@ -1,4 +1,5 @@
 import {FORM_ELEMENT} from 'constants/formFields.constant';
+import {educationalQualificationChoices, stateChoices} from 'constants/choices';
 
 export const seekerSignUpTForm = () => [
     {
@@ -38,29 +39,13 @@ export const seekerSignUpTForm = () => [
         label: 'State',
         name: 'state',
         type: FORM_ELEMENT.SELECT,
-        options: {
-            'National Capital Territory of Delhi': 'National Capital Territory of Delhi'
-        },
+        options: stateChoices,
         rules: [{required: true},],
     }, {
         label: 'Qualification',
         name: 'educational_qualification',
         type: FORM_ELEMENT.SELECT,
-        options: {
-            'BELOW 5th Class': 'BELOW 5th Class',
-            'Class 5th to 9th': 'Class 5th to 9th',
-            '10th pass': '10th pass',
-            '12th pass': '12th pass',
-            'ITI': 'ITI',
-            'Polytechnic': 'Polytechnic',
-            'Diploma': 'Diploma',
-            'Graduate (B.Sc., B.A., B.Com.)': 'Graduate (B.Sc., B.A., B.Com.)',
-            'Other Graduate (Any Stream)': 'Other Graduate (Any Stream)',
-            'B.Tech. (Any Stream)': 'B.Tech. (Any Stream)',
-            'M.Tech. (Any Stream)': 'M.Tech. (Any Stream)',
-            'Post graduate (Any stream)': 'Post graduate (Any stream)',
-            'MBA/PGDM (Any Stream)': 'MBA/PGDM (Any Stream)'
-        },
+        options: educationalQualificationChoices,
         rules: [{required: true},],
     }, {
         label: 'Address',
@@ -82,16 +67,4 @@ export const seekerSignUpTForm = () => [
             6: 'Above 5'
         }
     }
-    // {
-    //     label: 'Aadhar Number',
-    //     name: 'adhaar_no',
-    //     type: FORM_ELEMENT.INPUT,
-    //     rules: [
-    //         {required: true},
-    //         {
-    //             pattern: /^\d{12}$/,
-    //             message: 'Not valid aadhar number',
-    //         },
-    //     ],
-    // }
 ];

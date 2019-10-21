@@ -52,7 +52,7 @@ const HomeEmployer = () => {
 
     return (<div className='container'>
             <Title>Recruitment</Title>
-            <Link to='/recruitment/add/'>
+            <Link to='/job/add/'>
                 <Button type='primary' icon='plus'>
                     Add Recruitment
                 </Button>
