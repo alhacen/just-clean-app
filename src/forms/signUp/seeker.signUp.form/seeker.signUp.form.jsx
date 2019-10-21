@@ -15,7 +15,7 @@ const SeekerSignUpForm = ({next, setData, data}) => {
             onSubmit={(objForm) => {
                 setData({
                     ...data,
-                    ...objForm.getFieldsValue()
+                    seeker: objForm.getFieldsValue()
                 });
                 next();
             }}

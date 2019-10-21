@@ -3,7 +3,7 @@ import {FORM_ELEMENT} from 'constants/formFields.constant';
 export const otpSignUpTForm = () => [
     {
         label: 'Phone Number',
-        name: 'phone_no',
+        name: 'phone',
         type: FORM_ELEMENT.INPUT,
         rules: [{required: true}, {pattern: /^\d{10}$/, message: 'Not a Valid Indian Phone Number'}],
         kwargs: {

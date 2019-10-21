@@ -14,7 +14,7 @@ const PasswordSignUpForm = ({next, data, setData}) => {
             onSubmit={(objForm) => {
                 setData({
                     ...data,
-                    ...objForm.getFieldsValue()
+                    account: objForm.getFieldsValue()
                 });
                 next();
             }}

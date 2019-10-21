@@ -14,7 +14,7 @@ const OtpSignUpForm = ({setData, next, data}) => {
             onSubmit={(objForm) => {
                 setData({
                     ...data,
-                    ...objForm.getFieldsValue()
+                    account: objForm.getFieldsValue()
                 });
                 next();
             }}

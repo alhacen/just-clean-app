@@ -15,7 +15,7 @@ const EmployerSignUpForm = ({next, data, setData}) => {
             onSubmit={(objForm) => {
                 setData({
                     ...data,
-                    ...objForm.getFieldsValue()
+                    organisation: objForm.getFieldsValue()
                 });
                 next()
             }}

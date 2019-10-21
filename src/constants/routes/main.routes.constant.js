@@ -1,8 +1,7 @@
 import {lazy} from 'react';
 import {
-    HOME_PATH, SEEKER_SIGNUP_PATH,
-    SIGN_IN_PATH,
-    SEEKER_JOB_RECRUITMENT_DETAILS_PATH
+    HOME_PATH,
+    SIGN_IN_PATH
 } from './main.paths.constant';
 
 export const COMMON_ROUTES = [
@@ -48,11 +47,7 @@ export const SEEKER_COMMON_ROUTES = [
 ];
 
 export const SEEKER_EXTRA_ROUTES = [
-    {
-        path: SEEKER_JOB_RECRUITMENT_DETAILS_PATH,
-        title: 'seeker recruitment Details',
-        screen: lazy(() => import('screens/seeker/recruitmentDetails.seeker.screen')),
-    }
+
 ];
 
 export const EMPLOYER_COMMON_ROUTES = [
@@ -69,9 +64,5 @@ export const EMPLOYER_COMMON_ROUTES = [
 ];
 
 export const EMPLOYER_EXTRA_ROUTES = [
-    {
-        path: '/applications/:job_id/:seeker_id/',
-        title: 'Seeker Profile',
-        screen: lazy(() => import('screens/employer/appliedSeekerProfile.employer')),
-    },
+
 ];

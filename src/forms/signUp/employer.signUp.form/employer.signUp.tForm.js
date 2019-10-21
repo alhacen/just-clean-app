@@ -1,69 +1,70 @@
 import {FORM_ELEMENT} from 'constants/formFields.constant';
 
 export const employerSignUpTForm = () => [
-  {
-    label: 'Company Name',
-    name: 'company_name',
-    kwargs: {
-      placeholder: 'ex: aria-16',
+    {
+        label: 'Company Name',
+        name: 'name',
+        type: FORM_ELEMENT.INPUT,
+        rules: [{required: true}],
     },
-    type: FORM_ELEMENT.INPUT,
-    rules: [{required: true}],
-  },
-  {
-    label: 'Employers Type',
-    name: 'employer_type',
-    type: FORM_ELEMENT.SELECT,
-    rules: [
-      {required: true},
-    ],
-    options: {
-      I: 'Individual',
-      P: 'Proprietorship',
-      L: 'Pvt. Ltd.'
-    }
-  },
-  {
-    label: 'Address',
-    name: 'address',
-    kwargs: {
-      placeholder: 'ex: Delhi',
+    {
+        label: 'Company Type',
+        name: 'type',
+        type: FORM_ELEMENT.SELECT,
+        rules: [
+            {required: true},
+        ],
+        options: {
+            S: 'Proprietorship',
+            O: 'One Person Company',
+            '8': 'Section 8 Company',
+            P: 'Partnership',
+            L: 'Limited Liability Partnership',
+            C: 'Pvt. Ltd.',
+            M: 'Public Limited'
+        }
     },
-    type: FORM_ELEMENT.TEXTAREA,
-    rules: [
-      {required: true},
-    ],
-  },
-  {
-    label: 'Contact Person Name',
-    name: 'contact_person_name',
-    type: FORM_ELEMENT.INPUT,
-    rules: [{required: true}],
-  },
-  {
-    label: 'City',
-    name: 'city',
-    type: FORM_ELEMENT.SELECT,
-    rules: [{required: true}],
-    options: {
-      '1': 'Delhi',
-      '2': 'Azamgarh',
+    {
+        label: 'Website',
+        name: 'website',
+        type: FORM_ELEMENT.INPUT
     },
-  },
-  {
-    label: 'State',
-    name: 'state',
-    type: FORM_ELEMENT.SELECT,
-    rules: [{required: true}],
-    options: {
-      '1': 'Delhi',
-      '2': 'Azamgarh',
+    {
+        label: 'Company phone',
+        name: 'phone',
+        type: FORM_ELEMENT.INPUT,
+        rules: [{required: true}, {pattern: /^\d{10}$/, message: 'Not a Valid Indian phone number'}],
     },
-  },
-  {
-    label: 'Pin Code',
-    name: 'pin_code',
-    type: FORM_ELEMENT.INPUT,
-    rules: [{required: true}, {pattern: /^\d{6}$/, message: 'Not a Valid Indian Pin-Code'}],
-  },
+    {
+        label: 'Address',
+        name: 'address',
+        kwargs: {
+            placeholder: 'ex: Delhi',
+        },
+        type: FORM_ELEMENT.TEXTAREA,
+        rules: [
+            {required: true},
+        ],
+    },
+    {
+        label: 'Contact Person Name',
+        name: 'contact_person_name',
+        type: FORM_ELEMENT.INPUT,
+        rules: [{required: true}],
+    },
+    {
+        label: 'Pin Code',
+        name: 'pin_code',
+        type: FORM_ELEMENT.INPUT,
+        rules: [{required: true}, {pattern: /^\d{6}$/, message: 'Not a Valid Indian Pin-Code'}],
+    },
+    {
+        label: 'State',
+        name: 'state',
+        type: FORM_ELEMENT.SELECT,
+        rules: [{required: true}],
+        options: {
+            'National Capital Territory of Delhi': 'National Capital Territory of Delhi'
+        },
+    },
 ];

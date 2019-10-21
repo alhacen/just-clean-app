@@ -1,6 +1,6 @@
 import {loadOpenUrl} from 'helpers/api/main.api.helper';
 
-const SEEKER_SIGNUP = '/seeker/signup/';
+const SEEKER_SIGNUP = '/seeker/sign-up/';
 
 export const seekerSignUp = (data) => loadOpenUrl(SEEKER_SIGNUP, {
     data: data,

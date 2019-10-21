@@ -11,7 +11,6 @@ const SignUpCard = () => (
         to find a job
         <br/>
         <br/>
-        aaaaaaaaaaa
     </Card>
 );
 

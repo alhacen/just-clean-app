@@ -235,7 +235,10 @@ class FormCreator extends Component {
               itemInput = <Switch {...kwargs} />;
               break;
             case FORM_ELEMENT.HIDDEN:
-              itemInput = <input type="hidden" />;
+              itemInput = <input type="hidden" {...kwargs} />;
+              break;
+            case FORM_ELEMENT.DATE_TIME_PICKER:
+              itemInput = <DatePicker {...kwargs}  />;
               break;
             case FORM_ELEMENT.CASCADER:
               itemInput = <input type="hidden" />;

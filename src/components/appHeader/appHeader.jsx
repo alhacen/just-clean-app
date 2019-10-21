@@ -5,7 +5,7 @@ import {connect} from 'react-redux';
 
 import {selectScreen} from 'helpers/screen.helper';
 import {HOME_PATH} from 'constants/routes/main.paths.constant';
-import {USER_SIGNED_IN, USER_SIGNED_OUT} from 'actions';
+import {USER_SIGNED_OUT} from 'actions';
 
 const {Text} = Typography;
 
@@ -34,7 +34,7 @@ const AppHeader = ({isAuthenticated, signOut}) => (
                 </Col>
             </Link>
             <Col xs={0} md={18} xxl={20}>
-                {isAuthenticated? (
+                {isAuthenticated ? (
                     <Button type='link' size='large' style={{float: 'right'}} onClick={signOut}>
                         Sign Out
                     </Button>
