@@ -1,5 +1,7 @@
 import React, {useState} from 'react';
 import {Card, Typography, Spin, Button, notification} from 'antd';
+import {Link} from 'react-router-dom';
+
 import {withRouter} from 'react-router-dom';
 import OtpSignUpForm from 'forms/signUp/otp.signUp.form';
 import PasswordSignUpForm from 'forms/signUp/passoword.SignUp.form/password.signUp.form';
@@ -7,7 +9,7 @@ import {seekerSignUp} from 'helpers/api/seeker.api.helper';
 import {employerSignUp} from 'helpers/api/employer.api.helper';
 
 
-const {Title} = Typography;
+const {Title, Text} = Typography;
 
 const SignUpSelection = ({type, setData, next, data}) => {
 
@@ -55,7 +57,7 @@ const SignUpCard = ({subTitle, component: Component, type, history}) => {
                 description:
                 'Your account has been created, Sign In to your account'
             });
-            history.push('/');
+            history.push('/welcome/');
         } catch (e) {
             setState(3);
         }
@@ -100,6 +102,15 @@ const SignUpCard = ({subTitle, component: Component, type, history}) => {
                 Sign Up
             </Title>
             {subTitle}
+            <br/>
+            <Text type='secondary'>
+                or &nbsp;
+                <Link to='/sign-in/'>
+                    Sign In
+                </Link>
+                &nbsp;
+                if already have a account
+            </Text>
 
             <br/>
             <br/>

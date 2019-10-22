@@ -31,6 +31,11 @@ export const COMMON_ROUTES = [
         title: 'Employer Home',
         screen: lazy(() => import('screens/employer/main.employer')),
         exact: false
+    }, {
+        path: '/welcome/',
+        title: 'Employer Home',
+        screen: lazy(() => import('screens/welcome.screen')),
+        exact: false
     },
 ];
 
