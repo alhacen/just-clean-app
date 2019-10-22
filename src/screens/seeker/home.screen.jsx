@@ -34,7 +34,7 @@ const Home = () => {
                     {jobs.length === 0 ? (
                         <Card>
                             <Empty description='No Job Available'>
-                                <Link to='job-available/'>
+                                <Link to='/jobs/'>
                                     <Button>Find Jobs</Button>
                                 </Link>
                             </Empty>

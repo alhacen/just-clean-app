@@ -9,7 +9,7 @@ body {
 }
 
 .container {
-  padding: 20px;
+  padding: 5px;
 }
 
 .center-hv {
@@ -62,4 +62,22 @@ video.responsive-video {
 
 .portal .ant-menu-submenu-popup {
   left: 0 !important;
+}
+
+.drawer-handel {
+  position: fixed;
+  top: 0;
+  right: 0;
+  z-index: 1000;
+  box-shadow: 2px 0 8px rgba(0, 0, 0, 0.15);
+  background-color: #ffffff;
+  padding: 10px;
+  height: 64px;
+  font-size: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-top-left-radius: 5px;
+  border-bottom-left-radius: 5px;
+  border-right: #999999 solid 1px;
 }

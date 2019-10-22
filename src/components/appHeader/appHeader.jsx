@@ -1,5 +1,5 @@
 import React from 'react';
-import {Col, Row, Typography, Button} from 'antd';
+import {Col, Row} from 'antd';
 import {Link} from 'react-router-dom';
 import {connect} from 'react-redux';
 
@@ -7,9 +7,12 @@ import {selectScreen} from 'helpers/screen.helper';
 import {HOME_PATH} from 'constants/routes/main.paths.constant';
 import {USER_SIGNED_OUT} from 'actions';
 
-const {Text} = Typography;
+import Logo from 'assets/images/Logo.png';
+import HeaderPills from 'components/headerPills';
+import HeaderPillsMobile from 'components/headerPillsMobile';
 
-const AppHeader = ({isAuthenticated, signOut}) => (
+
+const AppHeader = ({isAuthenticated, signOut, user}) => (
     <header>
         <Row style={{flex: 1}}>
             <Link to={HOME_PATH}>
@@ -20,25 +23,17 @@ const AppHeader = ({isAuthenticated, signOut}) => (
                     className='logo-container'
                     style={{justifyContent: selectScreen('center', 'center', null)}}
                 >
-                    &nbsp;&nbsp;&nbsp;
-                    <div>
-                        <Text strong>
-                            JustCleanRojgar.in
-                        </Text>
-                        <div>
-                            <Text style={{fontSize: '0.75rem'}}>
-                                Connecting 20 Crore Indian to Employment
-                            </Text>
-                        </div>
+                    <div className='center-hv'>
+                        <img src={Logo} alt='Just Clean Rojgar'/>
                     </div>
                 </Col>
             </Link>
+            <HeaderPillsMobile user={user} isAuthenticated={isAuthenticated} signOut={signOut}/>
             <Col xs={0} md={18} xxl={20}>
-                {isAuthenticated ? (
-                    <Button type='link' size='large' style={{float: 'right'}} onClick={signOut}>
-                        Sign Out
-                    </Button>
-                ) : null}
+                <div className='center-hv' style={{float: 'right'}}>
+                    <HeaderPills mode={selectScreen('vertical', 'horizontal')} user={user}
+                                 isAuthenticated={isAuthenticated} signOut={signOut}/>
+                </div>
             </Col>
         </Row>
     </header>
@@ -46,7 +41,8 @@ const AppHeader = ({isAuthenticated, signOut}) => (
 
 
 const mapStateToProps = (state) => ({
-    isAuthenticated: state.auth.isAuthenticated
+    isAuthenticated: state.auth.isAuthenticated,
+    user: state.auth.user
 });
 
 const mapDispatchToProps = (dispatch) => ({

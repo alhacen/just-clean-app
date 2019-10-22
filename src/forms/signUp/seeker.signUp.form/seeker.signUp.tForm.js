@@ -1,5 +1,5 @@
 import {FORM_ELEMENT} from 'constants/formFields.constant';
-import {educationalQualificationChoices, stateChoices} from 'constants/choices';
+import {educationalQualificationChoices, jobTitleChoices, stateChoices} from 'constants/choices';
 
 export const seekerSignUpTForm = () => [
     {
@@ -66,5 +66,16 @@ export const seekerSignUpTForm = () => [
             5: 'Four year to 5 year',
             6: 'Above 5'
         }
+    }, {
+        label: 'Aadhar',
+        name: 'aadhar',
+        type: FORM_ELEMENT.INPUT,
+        rules: [{required: true}, {pattern: /^\d{12}$/}],
+    }, {
+        label: 'Job looking for',
+        name: 'job_title',
+        type: FORM_ELEMENT.SELECT,
+        rules: [{required: true},],
+        options: jobTitleChoices
     }
 ];

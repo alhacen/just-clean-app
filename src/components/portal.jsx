@@ -25,6 +25,7 @@ const Portal = ({
 
     return (
         <div className='full-page'>
+
             <BrowserRouter basename={baseLocation}>
                 {/*<SideBar routes={sideRoutes}/>*/}
                 <div className='full-page' style={{

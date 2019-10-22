@@ -6,28 +6,30 @@ import {connect} from 'react-redux';
 import {Link} from 'react-router-dom';
 
 import SignInForm from 'forms/signIn.form';
-import {SEEKER_SIGNUP_PATH,EMPLOYER_SIGNUP_PATH} from 'constants/routes/main.paths.constant';
+import {SEEKER_SIGNUP_PATH, EMPLOYER_SIGNUP_PATH} from 'constants/routes/main.paths.constant';
 
 const {Title} = Typography;
 const SignInCard = ({signIn: signInAction, isAuthenticated, user}) => {
-    if(isAuthenticated){
+    if (isAuthenticated) {
         switch (user.type) {
             case 'S':
-                return <Redirect to='/seeker/' />;
+                return <Redirect to='/seeker/'/>;
             case 'E':
-                return <Redirect to='/employer/' />
+                return <Redirect to='/employer/'/>;
+            default:
+                return <Redirect to='/'/>;
         }
     }
 
     return (
-        <Card style={{textAlign: 'center'}}>
+        <Card>
             <Title level={2} style={{marginBottom: 0}}>
                 Sign In
             </Title>
             to continue
             <br/>
             <br/>
-            <SignInForm signIn={signInAction} />
+            <SignInForm signIn={signInAction}/>
 
             <div style={{display: 'flex', justifyContent: 'space-between', width: '100%', flexWrap: 'wrap'}}>
                 <Link to={SEEKER_SIGNUP_PATH}>

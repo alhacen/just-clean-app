@@ -1,5 +1,4 @@
 import React, {useEffect} from 'react';
-import Fade from 'react-reveal/Fade';
 
 
 const Screen = ({title, screen: ScreenComponent}) => {
@@ -8,9 +7,7 @@ const Screen = ({title, screen: ScreenComponent}) => {
     }, [title]);
 
     return (
-        <Fade>
-            <ScreenComponent/>
-        </Fade>
+        <ScreenComponent/>
     );
 };
 

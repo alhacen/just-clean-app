@@ -3,7 +3,6 @@ import {Card, Typography, Spin, Button, notification} from 'antd';
 import {withRouter} from 'react-router-dom';
 import OtpSignUpForm from 'forms/signUp/otp.signUp.form';
 import PasswordSignUpForm from 'forms/signUp/passoword.SignUp.form/password.signUp.form';
-import Fade from 'react-reveal/Fade';
 import {seekerSignUp} from 'helpers/api/seeker.api.helper';
 import {employerSignUp} from 'helpers/api/employer.api.helper';
 
@@ -26,9 +25,7 @@ const SignUpSelection = ({type, setData, next, data}) => {
     }
 
     return (
-        <Fade left>
-            <Component setData={setData} next={next} data={data}/>
-        </Fade>
+        <Component setData={setData} next={next} data={data}/>
     );
 };
 
@@ -80,7 +77,7 @@ const SignUpCard = ({subTitle, component: Component, type, history}) => {
                 </div>
             );
             break;
-        case 3:
+        default:
             component = (
                 <div style={{height: 300}} className='center-hv'>
                     <div>
