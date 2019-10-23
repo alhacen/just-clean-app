@@ -9,6 +9,7 @@ import {BADGES} from 'constants/home/badges.home.constant';
 
 import BG from 'assets/images/BG.jpg';
 import {jobTitleChoices} from 'constants/choices';
+import {selectScreen} from 'helpers/screen.helper';
 
 const {Title, Text} = Typography;
 
@@ -18,7 +19,7 @@ const HomeButton = ({text, background = '#000', hindi, link = '/sign-in/'}) => (
         <Link to={link}>
             <div style={{backgroundColor: background, padding: 10, border: '1px solid #AAA'}} className='center-hv'>
                 <div>
-                    <Title level={2} style={{margin: 0, color: '#FFF'}}>
+                    <Title level={selectScreen(4, 3)} style={{margin: 0, color: '#FFF'}}>
                         {text}
                     </Title>
                     <Text style={{margin: 0, color: '#FFF'}}>
@@ -53,7 +54,7 @@ function HomeScreen() {
                     {/*<img src={BG} alt="" style={{position: 'absolute', zIndex: -1, width: '100vw', top: 0, left: 0}}/>*/}
                     <br/>
                     <br/>
-                    <Title style={{textShadow: '2px 2px 2px #FFF'}}>
+                    <Title level={selectScreen(4, 3, 1)} style={{textShadow: '2px 2px 2px #FFF'}}>
                         CONNECTING EVERY JOB SEEKER WITH OPPORTUNITIES
                         <br/>
                         भारत के हर नागरिक को रोज़गार के अवसर
@@ -66,9 +67,10 @@ function HomeScreen() {
                         <HomeButton text='Job Seeker Premium' hindi='नौकरी खोजने वालों के लिए प्रीमियम सर्विस'
                                     background='#AFE13A'/>
                         <HomeButton text='Partner' hindi='पार्टनरों के लिए' background='#DCC83A'/>
-                        <HomeButton text='Training' hindi='प्रशिक्षण' background='#414141'/>
                         <HomeButton text='Employers' hindi='नियोक्ताओं के लिए' background='#081951'
                                     link='/employer/sign-up/'/>
+                        <HomeButton text='Training' hindi='प्रशिक्षण' background='#414141'/>
+
                     </Row>
                 </Col>
             </Row>

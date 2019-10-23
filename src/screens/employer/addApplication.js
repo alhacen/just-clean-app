@@ -7,7 +7,7 @@ const {Title} = Typography;
 
 const AddApplication = () => (
     <div className='full-page center-hv'>
-        <Card style={{maxWidth: '95vw', width: 500}}>
+        <Card style={{maxWidth: '95vw', width: 600}}>
             <Title>
                 Add Job
             </Title>

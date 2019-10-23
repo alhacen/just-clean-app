@@ -51,10 +51,10 @@ const HomeEmployer = () => {
     }, [setData]);
 
     return (<div className='container'>
-            <Title>Recruitment</Title>
+            <Title>Employer Dashboard</Title>
             <Link to='/job/add/'>
                 <Button type='primary' icon='plus'>
-                    Add Recruitment
+                    Add Job
                 </Button>
             </Link>
             <br/>

@@ -19,25 +19,30 @@ export const addApplicationTForm = () => [
         ],
         options: {
             0: '0 to 6 months',
-            1: '6 months ro 1 year',
+            1: '6 months to 1 year',
             2: '1 year to 2 year',
             3: '2 year to 3 year',
             4: '3 year to 4 year',
-            5: 'Four year to 5 year',
-            6: 'Above 5'
+            5: '4 year to 5 year',
+            6: 'Above 5 year'
         }
     },
     {
-        label: 'Location',
+        label: 'Job Location',
         name: 'location',
-        type: FORM_ELEMENT.INPUT,
+        type: FORM_ELEMENT.TEXTAREA,
         rules: [{required: true}],
+        kwargs: {
+            placeholder: 'Enter full address'
+        }
     },
     {
         label: 'Gender',
         name: 'gender',
         type: FORM_ELEMENT.SELECT,
+        defaultValue: '',
         options: {
+            '': 'All',
             'M': 'Male',
             'F': 'Female',
             'O': 'Others'
@@ -52,10 +57,14 @@ export const addApplicationTForm = () => [
         options: educationalQualificationChoices
     },
     {
-        label: 'Salary Range',
+        label: 'Salary Range CTC',
         name: 'salary_range',
         type: FORM_ELEMENT.INPUT,
         rules: [{required: true}],
+        kwargs: {
+            suffix: 'per month',
+            prefix: ''
+        }
     },
     {
         label: 'Application Open till',

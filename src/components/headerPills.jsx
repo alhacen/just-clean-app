@@ -9,7 +9,7 @@ const HeaderPills = ({isAuthenticated, user, signOut, mode}) => (
         {isAuthenticated ? (
             <Item>
                 <Link to='/sign-in/'>
-                    Job Portal
+                    Dashboard Home
                 </Link>
             </Item>
         ) : null}

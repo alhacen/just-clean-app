@@ -13,7 +13,7 @@ export const seekerSignUpTForm = () => [
         type: FORM_ELEMENT.INPUT,
         rules: [{required: true},],
     }, {
-        label: 'gender',
+        label: 'Gender',
         name: 'gender',
         type: FORM_ELEMENT.SELECT,
         rules: [{required: true},],
@@ -31,7 +31,12 @@ export const seekerSignUpTForm = () => [
             format: 'YYYY-MM-DD',
         },
     }, {
-        label: 'PinCode',
+        label: 'Address',
+        name: 'address',
+        type: FORM_ELEMENT.TEXTAREA,
+        rules: [{required: true},],
+    }, {
+        label: 'Pin Code',
         name: 'pin_code',
         type: FORM_ELEMENT.INPUT,
         rules: [{required: true, min: 6, max: 6}],
@@ -48,11 +53,6 @@ export const seekerSignUpTForm = () => [
         options: educationalQualificationChoices,
         rules: [{required: true},],
     }, {
-        label: 'Address',
-        name: 'address',
-        type: FORM_ELEMENT.TEXTAREA,
-        rules: [{required: true},],
-    }, {
         label: 'Your experience',
         name: 'experience',
         type: FORM_ELEMENT.SELECT,
@@ -67,10 +67,10 @@ export const seekerSignUpTForm = () => [
             6: 'Above 5'
         }
     }, {
-        label: 'Aadhar',
+        label: 'Aadhar Number',
         name: 'aadhar',
         type: FORM_ELEMENT.INPUT,
-        rules: [{required: true}, {pattern: /^\d{12}$/}],
+        rules: [{required: true}, {pattern: /^\d{12}$/, message: 'Not a valid aadhar number'}],
     }, {
         label: 'Job looking for',
         name: 'job_title',

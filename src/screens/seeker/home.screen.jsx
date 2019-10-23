@@ -30,10 +30,10 @@ const Home = () => {
                     </Link>
                     <br />
                     <br />
-                    <Title level={3}>Job Applied</Title>
+                    <Title level={3}>Jobs Applied</Title>
                     {jobs.length === 0 ? (
                         <Card>
-                            <Empty description='No Job Available'>
+                            <Empty description=''>
                                 <Link to='/jobs/'>
                                     <Button>Find Jobs</Button>
                                 </Link>
@@ -45,9 +45,6 @@ const Home = () => {
                         return (
                             <Card bordered={false}>
                                 <Descriptions title={`${job.job.organisation} - ${job.job.title}`}>
-                                    <Descriptions.Item label='Minimum Experience'>
-                                        {job.min_experience}
-                                    </Descriptions.Item>
 
                                     <Descriptions.Item label='Applied on'>
                                         {new Date(job.applied_on).toLocaleString()}

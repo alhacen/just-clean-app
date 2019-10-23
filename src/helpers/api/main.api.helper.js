@@ -29,7 +29,7 @@ const getAccessToken = () => {
     if (!data) return reject('No User found');
 
     let accessToken = '';
-    const expires = new Date(data.expires * 1000);
+    const expires = new Date(data.expires);
     const currentTime = new Date();
 
     if (expires > currentTime) {

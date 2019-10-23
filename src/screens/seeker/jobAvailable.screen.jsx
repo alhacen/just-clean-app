@@ -64,7 +64,7 @@ const JobAvailable = ({history}) => {
                                         {new Date(job.posted).toLocaleString()}
                                     </Descriptions.Item>
 
-                                    <Descriptions.Item label='Last Date'>
+                                    <Descriptions.Item label='Last Date of Application'>
                                         {new Date(job.apply_till).toLocaleString()}
                                     </Descriptions.Item>
 
@@ -79,6 +79,7 @@ const JobAvailable = ({history}) => {
                                     <Descriptions.Item label='Job Location'>
                                         {job.location}
                                     </Descriptions.Item>
+
                                 </Descriptions>
                                 <Button type='primary' loading={applying} onClick={async () => {
                                     try {
