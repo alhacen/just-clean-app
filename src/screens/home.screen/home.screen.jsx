@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from 'react';
-import {Row, Col, Typography} from 'antd';
+import {Row, Col, Typography, Card} from 'antd';
 import {Link} from 'react-router-dom';
 
 import JobSeeker from 'assets/images/job-seeker.png';
@@ -8,8 +8,10 @@ import OurPartners from 'components/home/ourPartners'
 import {BADGES} from 'constants/home/badges.home.constant';
 
 import BG from 'assets/images/BG.jpg';
-import {jobTitleChoices} from 'constants/choices';
+// import {jobTitleChoices} from 'constants/choices';
 import {selectScreen} from 'helpers/screen.helper';
+
+import JobImage from 'components/jobImage';
 
 const {Title, Text} = Typography;
 
@@ -51,7 +53,6 @@ function HomeScreen() {
         <div className='container'>
             <Row>
                 <Col xs={24} style={{textAlign: 'center', backgroundImage: BG, position: 'relative'}}>
-                    {/*<img src={BG} alt="" style={{position: 'absolute', zIndex: -1, width: '100vw', top: 0, left: 0}}/>*/}
                     <br/>
                     <br/>
                     <Title level={selectScreen(4, 3, 1)} style={{textShadow: '2px 2px 2px #FFF'}}>
@@ -83,20 +84,34 @@ function HomeScreen() {
                 <Title>
                     We offer jobs for
                 </Title>
-                {Object.keys(jobTitleChoices).map(title => (
-                    <>
-                        <div style={{
-                            backgroundColor: '#DDD',
-                            padding: 5,
-                            color: '#000',
-                            margin: 5,
-                            display: 'inline-block'
-                        }}>
-                            {title}
-                        </div>
-                    </>
-                ))}
-
+                <Row style={{textAlign: 'center'}}>
+                    <JobImage label='Machine Operator / Helper'/>
+                    <JobImage label='Driver (Private Vehicles)'/>
+                    <JobImage label='Driver (Commercial Vehicles)'/>
+                    <JobImage label='Driver (Heavy Vehicles - Bus, Truck, Trailer, etc.)'/>
+                    <JobImage label='Security Staff'/>
+                    <JobImage label='Bouncer'/>
+                    <JobImage label='PSO (Personal Security Officer)'/>
+                    <JobImage label='Computer Operator'/>
+                    <JobImage label='Painter'/>
+                    <JobImage label='BPO / Call Centre'/>
+                    <JobImage label='Retail Sales Staff'/>
+                    <JobImage label='Web Developer'/>
+                    <JobImage label='Web Designer'/>
+                    <Col xs={12} sm={6} md={3} style={{margin: 10}}>
+                        <Card bordered={false}
+                              style={{borderRadius: 10, height: 140, width: 175, textAlign: 'center'}}>
+                            <img
+                                src={require('assets/images/jobs/job-seeker.png')}
+                                className='responsive-img'
+                                style={{height: 50}} alt='And more...'
+                            />
+                            <br/>
+                            <br/>
+                            <h4>And more...</h4>
+                        </Card>
+                    </Col>
+                </Row>
             </div>
 
             <Row>
@@ -119,7 +134,7 @@ function HomeScreen() {
                     <iframe width="100%" height="315" title='About Just Clean'
                             src="https://www.youtube.com/embed/Qy4Wq0CjGjw"/>
                 </Col>
-                <Col xs={24} sm={12}>
+                <Col xs={24} sm={12} className='container'>
                     <AboutUs/>
                 </Col>
             </Row>

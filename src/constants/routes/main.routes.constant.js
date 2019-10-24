@@ -46,14 +46,16 @@ export const SEEKER_COMMON_ROUTES = [
         screen: lazy(() => import('screens/seeker/home.screen')),
     }, {
         path: '/jobs/',
-        title: 'seeker Home path',
+        title: 'All jobs',
         screen: lazy(() => import('screens/seeker/jobAvailable.screen')),
+    }, {
+        path: '/jobs/applied/',
+        title: 'Applied jobs',
+        screen: lazy(() => import('screens/seeker/jobApplied.screen')),
     },
 ];
 
-export const SEEKER_EXTRA_ROUTES = [
-
-];
+export const SEEKER_EXTRA_ROUTES = [];
 
 export const EMPLOYER_COMMON_ROUTES = [
     {
@@ -69,7 +71,11 @@ export const EMPLOYER_COMMON_ROUTES = [
 ];
 
 export const EMPLOYER_EXTRA_ROUTES = [
-{
+    {
+        path: '/job/add/:hash/',
+        title: 'Add job applications',
+        screen: lazy(() => import('screens/employer/addApplication')),
+    }, {
         path: '/job/add/',
         title: 'Add job applications',
         screen: lazy(() => import('screens/employer/addApplication')),

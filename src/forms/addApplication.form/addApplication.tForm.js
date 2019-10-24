@@ -9,8 +9,14 @@ export const addApplicationTForm = () => [
         type: FORM_ELEMENT.SELECT,
         rules: [{required: true}],
         options: jobTitleChoices
-    },
-    {
+    }, {
+        label: 'Number of vacancies',
+        name: 'vacancies',
+        type: FORM_ELEMENT.INPUT_NUMBER,
+         rules: [
+            {required: true},
+        ],
+    }, {
         label: 'Min Experience',
         name: 'min_experience',
         type: FORM_ELEMENT.SELECT,
@@ -26,8 +32,7 @@ export const addApplicationTForm = () => [
             5: '4 year to 5 year',
             6: 'Above 5 year'
         }
-    },
-    {
+    }, {
         label: 'Job Location',
         name: 'location',
         type: FORM_ELEMENT.TEXTAREA,
@@ -35,38 +40,49 @@ export const addApplicationTForm = () => [
         kwargs: {
             placeholder: 'Enter full address'
         }
-    },
-    {
+    }, {
         label: 'Gender',
         name: 'gender',
         type: FORM_ELEMENT.SELECT,
-        defaultValue: '',
+        initialValue: '',
         options: {
             '': 'All',
             'M': 'Male',
             'F': 'Female',
             'O': 'Others'
-        }
-    },
-    {
-        label: 'Educational Qualification',
+        },
+    }, {
+        label: 'Min Qualification',
         name: 'educational_qualification',
 
         type: FORM_ELEMENT.SELECT,
         rules: [{required: true},],
         options: educationalQualificationChoices
-    },
-    {
-        label: 'Salary Range CTC',
+    }, {
+        label: 'Questions to ask',
+        name: 'questions',
+        type: FORM_ELEMENT.TEXTAREA,
+    }, {
+        label: 'Salary CTC',
         name: 'salary_range',
         type: FORM_ELEMENT.INPUT,
         rules: [{required: true}],
         kwargs: {
-            suffix: 'per month',
-            prefix: ''
+            addonAfter: 'per month',
+            addonBefore: 'INR',
+            placeholder: '10,000 - 20,000'
         }
-    },
-    {
+    }, {
+        label: 'Salary in hand',
+        name: 'salary_range_in_hand',
+        type: FORM_ELEMENT.INPUT,
+        rules: [{required: true}],
+        kwargs: {
+            addonAfter: 'per month',
+            addonBefore: 'INR',
+            placeholder: '7,500 - 15,000'
+        }
+    }, {
         label: 'Application Open till',
         name: 'apply_till',
         type: FORM_ELEMENT.DATE_TIME_PICKER,
@@ -74,5 +90,21 @@ export const addApplicationTForm = () => [
         kwargs: {
             format: 'YYYY-MM-DD',
         },
-    },
+    }, {
+        label: 'Eligibility',
+        name: 'eligibility',
+        type: FORM_ELEMENT.TEXTAREA,
+    }, {
+        label: 'Additional Info',
+        name: 'additional_info',
+        type: FORM_ELEMENT.TEXTAREA,
+    }, {
+        label: 'Reporting Location',
+        name: 'reporting_location',
+        type: FORM_ELEMENT.TEXTAREA,
+        rules: [{required: true}],
+        kwargs: {
+            placeholder: 'Full address where seeker has to report'
+        }
+    }
 ];

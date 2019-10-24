@@ -7,12 +7,12 @@ import {loadSecureUrl} from 'helpers/api/main.api.helper';
 import {notification} from 'antd';
 
 
-const AddApplicationForm = ({history}) => {
+const AddApplicationForm = ({history, title}) => {
     const form = (
         // @ts-ignore
         <FormCreator
             formTemplate={addApplicationTForm()}
-
+            initialValue={async () => ({title: title})}
             buttonType='block'
             submitButtonText='Next'
             onSubmit={async (objForm) => {

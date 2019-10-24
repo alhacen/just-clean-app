@@ -3,9 +3,9 @@ import {notification} from 'antd';
 import {USER_SIGNED_IN} from 'actions/index';
 import {signInWithOtp, signInWithPassword, userMeta} from 'helpers/api/main.api.helper';
 
-const saveToken = (token) => {
+export const saveToken = (token) => {
     reactLocalStorage.setObject('API_TOKENS', {
-        tokens: token,
+        ...token,
         expires: JSON.parse(atob(token.access.split('.')[1])).exp,
     });
 };

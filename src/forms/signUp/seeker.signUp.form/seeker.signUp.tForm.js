@@ -36,6 +36,11 @@ export const seekerSignUpTForm = () => [
         type: FORM_ELEMENT.TEXTAREA,
         rules: [{required: true},],
     }, {
+        label: 'City',
+        name: 'city',
+        type: FORM_ELEMENT.INPUT,
+        rules: [{required: true}],
+    }, {
         label: 'Pin Code',
         name: 'pin_code',
         type: FORM_ELEMENT.INPUT,

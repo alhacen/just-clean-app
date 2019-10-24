@@ -1,7 +1,7 @@
 import axios from 'axios';
 import {reactLocalStorage} from 'reactjs-localstorage';
+import {saveToken} from 'actions/auth.action';
 
-const API_TOKENS = 'API_TOKENS';
 // const API_BASE_URL = 'https://justcleanrojgar.herokuapp.com/';
 const API_BASE_URL = 'http://localhost:8000/';
 
@@ -24,33 +24,37 @@ export const loadOpenUrl = async (url, config = {}) => {
 const getAccessToken = () => {
   // eslint-disable-next-line no-async-promise-executor
   return new Promise(async (resolve, reject) => {
-    const data = reactLocalStorage.getObject(API_TOKENS);
+    const data = reactLocalStorage.getObject('API_TOKENS');
 
     if (!data) return reject('No User found');
 
     let accessToken = '';
     const expires = new Date(data.expires);
     const currentTime = new Date();
+    console.log(expires, currentTime);
 
     if (expires > currentTime) {
-      accessToken = data.tokens.access;
+      accessToken = data.access;
+
     } else {
       try {
         const newToken = await loadOpenUrl(REFRESH_ACCESS_TOKEN, {
           method: 'post',
           data: {
-            refresh: data.tokens.refresh,
+            refresh: data.refresh,
           },
         });
         accessToken = newToken.access;
 
-        reactLocalStorage.setObject(API_TOKENS, {
-          tokens: {
-            ...data.tokens,
-            access: accessToken,
-          },
-          expires: newToken.expires,
-        });
+        saveToken(data);
+
+        // reactLocalStorage.setObject('API_TOKENS', {
+        //   tokens: {
+        //     ...data.tokens,
+        //     access: accessToken,
+        //   },
+        //   expires: newToken.expires,
+        // });
       } catch (e) {
         try {
           if (e.data.code === 'token_not_valid') signInAgainNotification();

@@ -1,7 +1,8 @@
 import React, {useState, useEffect} from 'react';
 import {Link} from 'react-router-dom';
-import {Typography, Table, Button} from 'antd';
+import {Typography, Table, Button, notification} from 'antd';
 import {loadSecureUrl} from 'helpers/api/main.api.helper';
+import JobImage from 'components/jobImage';
 
 const {Title} = Typography;
 const columns = [
@@ -39,28 +40,60 @@ const columns = [
 
 const HomeEmployer = () => {
     const [data, setData] = useState([]);
+    const [seekers, setSeekers] = useState({});
 
     useEffect(() => {
         const x = async () => {
-            setData(
-                await loadSecureUrl('/employer/jobs/')
-            )
+            try {
+                setSeekers(
+                    await loadSecureUrl('/employer/jobs/seekers/')
+                );
+            } catch (e) {
+                notification.error({
+                    message: 'Error in loading seekers'
+                })
+            }
+        };
+
+        const y = async () => {
+            try {
+                setData(
+                    await loadSecureUrl('/employer/jobs/')
+                )
+            } catch (e) {
+                notification.error({
+                    message: 'Error in loading added jobs'
+                })
+            }
         };
 
         x();
-    }, [setData]);
+        y();
+    }, [setData, setSeekers]);
 
-    return (<div className='container'>
+    return (
+        <div className='container'>
             <Title>Employer Dashboard</Title>
             <Link to='/job/add/'>
                 <Button type='primary' icon='plus'>
                     Add Job
                 </Button>
             </Link>
-            <br/>
-            <br/>
 
+            <br/>
+            <br/>
             <Table columns={columns} dataSource={data}/>
+            <br/>
+            <Title level={3}>
+                Seekers available for hiring
+            </Title>
+
+            {Object.keys(seekers).map(title => (
+                <Link to={'/job/add/' + btoa(title) + '/'}>
+                    <JobImage label={title} count={seekers[title]}/>
+                </Link>
+            ))}
+
         </div>
     )
 };

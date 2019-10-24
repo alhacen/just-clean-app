@@ -9,7 +9,7 @@ body {
 }
 
 .container {
-  padding: 5px;
+  padding: 10px;
 }
 
 .center-hv {
@@ -80,4 +80,16 @@ video.responsive-video {
   border-top-left-radius: 5px;
   border-bottom-left-radius: 5px;
   border-right: #999999 solid 1px;
+}
+
+
+.ant-carousel .slick-slide {
+  text-align: center;
+  height: 160px;
+  line-height: 160px;
+  overflow: hidden;
+}
+
+.ant-carousel .slick-slide h3 {
+  color: #fff;
 }

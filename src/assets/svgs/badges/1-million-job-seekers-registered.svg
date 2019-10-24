@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<svg width="622px" height="507px" viewBox="0 0 622 507" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<svg width="629px" height="512px" viewBox="0 0 629 512" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
     <!-- Generator: Sketch 58 (84663) - https://sketch.com -->
-    <title>300-recruitment-drives</title>
+    <title>200-million-people-reached</title>
     <desc>Created with Sketch.</desc>
     <defs>
         <linearGradient x1="50%" y1="17.1932947%" x2="135.961071%" y2="136.951236%" id="linearGradient-1">
@@ -15,24 +15,24 @@
             <feColorMatrix values="0 0 0 0 1   0 0 0 0 0.858120727   0 0 0 0 0.541768293  0 0 0 1 0" type="matrix" in="shadowBlurOuter1"></feColorMatrix>
         </filter>
         <text id="text-4" font-family="Avenir-Black, Avenir" font-size="120" font-weight="700" fill="#000000">
-            <tspan x="196.795" y="141">100+</tspan>
-            <tspan x="105" y="284.649872" font-size="70" line-spacing="80">Recruitment</tspan>
-            <tspan x="201.53" y="364.649872" font-size="70" line-spacing="80">Drives</tspan>
+            <tspan x="237.03" y="141">1</tspan>
+            <tspan x="71.5" y="284.649872" font-size="70" line-spacing="80">Million People</tspan>
+            <tspan x="166.805" y="364.649872" font-size="70" line-spacing="80">Registered</tspan>
         </text>
-        <filter x="-4.0%" y="-4.3%" width="107.9%" height="109.8%" filterUnits="objectBoundingBox" id="filter-5">
+        <filter x="-3.4%" y="-4.3%" width="106.8%" height="109.8%" filterUnits="objectBoundingBox" id="filter-5">
             <feOffset dx="0" dy="2" in="SourceAlpha" result="shadowOffsetOuter1"></feOffset>
             <feGaussianBlur stdDeviation="5" in="shadowOffsetOuter1" result="shadowBlurOuter1"></feGaussianBlur>
             <feColorMatrix values="0 0 0 0 0.941176471   0 0 0 0 0.662745098   0 0 0 0 0.0509803922  0 0 0 1 0" type="matrix" in="shadowBlurOuter1"></feColorMatrix>
         </filter>
     </defs>
     <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-        <g id="Artboard">
-            <g id="300-recruitment-drives">
+        <g id="Artboard" transform="translate(-678.000000, -494.000000)">
+            <g id="200-million-people-reached" transform="translate(685.000000, 499.000000)">
                 <g id="Combined-Shape">
                     <use fill="black" fill-opacity="1" filter="url(#filter-3)" xlink:href="#path-2"></use>
                     <use fill="url(#linearGradient-1)" fill-rule="evenodd" xlink:href="#path-2"></use>
                 </g>
-                <g id="300+-Recruitment-Dri" fill="#000000" fill-opacity="1">
+                <g id="200-Million-People-R" fill="#000000" fill-opacity="1">
                     <use filter="url(#filter-5)" xlink:href="#text-4"></use>
                     <use xlink:href="#text-4"></use>
                 </g>

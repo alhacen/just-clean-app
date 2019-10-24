@@ -101,7 +101,7 @@ const JobApplication = ({match}) => {
                     Mark them as joined
                 </Button>
 
-                <Button onClick={() => changeStatus('R')} type='link'>
+                <Button onClick={() => changeStatus('R')} type='dashed'>
                     Mark them as rejected
                 </Button>
                 <Button onClick={() => changeStatus('B')} type='danger'>
