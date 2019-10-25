@@ -256,7 +256,14 @@ class FormCreator extends Component {
 
                         case FORM_ELEMENT.HIDDEN:
                             itemInput = <input type="hidden" {...kwargs} />;
-                            break;
+                            return (
+                                <span>
+                                    {getFieldDecorator(formItem.name, {
+                                        preserve: true,
+                                        ...fieldOptions,
+                                    })(itemInput)}
+                                </span>
+                            );
 
                         case FORM_ELEMENT.DATE_TIME_PICKER:
                             itemInput = <DatePicker {...kwargs}  />;

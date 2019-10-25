@@ -2,12 +2,13 @@ import {FORM_ELEMENT} from 'constants/formFields.constant';
 import {educationalQualificationChoices, jobTitleChoices} from 'constants/choices';
 
 
-export const addApplicationTForm = () => [
+export const addApplicationTForm = (state, initialValues) => [
     {
         label: 'Title',
         name: 'title',
         type: FORM_ELEMENT.SELECT,
         rules: [{required: true}],
+        initialValue: initialValues.title,
         options: jobTitleChoices
     }, {
         label: 'Number of vacancies',

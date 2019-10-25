@@ -36,6 +36,10 @@ export const COMMON_ROUTES = [
         title: 'Employer Home',
         screen: lazy(() => import('screens/welcome.screen')),
         exact: false
+    }, {
+        path: '/partner/seeker/sign-up/:partner/',
+        title: 'Sign Up and get Hired',
+        screen: lazy(() => import('screens/seeker/signUp.screen')),
     },
 ];
 
@@ -46,6 +50,10 @@ export const SEEKER_COMMON_ROUTES = [
         screen: lazy(() => import('screens/seeker/home.screen')),
     }, {
         path: '/jobs/',
+        title: 'All jobs',
+        screen: lazy(() => import('screens/seeker/jobAvailable.screen')),
+    }, {
+        path: '/jobs/search/:hash/',
         title: 'All jobs',
         screen: lazy(() => import('screens/seeker/jobAvailable.screen')),
     }, {

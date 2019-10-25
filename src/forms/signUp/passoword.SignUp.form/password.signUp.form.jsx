@@ -10,7 +10,7 @@ const PasswordSignUpForm = ({next, data, setData}) => {
         <FormCreator
             formTemplate={passwordSignUpTForm}
             buttonType='block'
-            submitButtonText='Next'
+            submitButtonText='Create my account'
             onSubmit={(objForm) => {
                 setData({
                     ...data,

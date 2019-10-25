@@ -95,17 +95,17 @@ const JobApplication = ({match}) => {
             <Title>Job Application</Title>
             <Button.Group>
                 <Button type='primary' onClick={() => changeStatus('D')}>
-                    Mark them as selected
+                    Select applicant
                 </Button>
                 <Button onClick={() => changeStatus('J')}>
-                    Mark them as joined
+                    Applicant Joined
                 </Button>
 
                 <Button onClick={() => changeStatus('R')} type='dashed'>
-                    Mark them as rejected
+                    Reject applicant
                 </Button>
                 <Button onClick={() => changeStatus('B')} type='danger'>
-                    Mark them as blacklisted
+                    Blacklist
                 </Button>
             </Button.Group>
             <br/>

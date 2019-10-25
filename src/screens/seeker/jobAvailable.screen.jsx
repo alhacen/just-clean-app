@@ -7,11 +7,15 @@ import {selectScreen} from 'helpers/screen.helper';
 
 const {Title} = Typography;
 
-const JobAvailable = ({history}) => {
+const JobAvailable = ({history, match}) => {
+
+    let title = '';
+    if(match.params.hash)
+        title = atob(match.params.hash);
 
     const [jobs, setJobs] = useState([]);
     const [applying, setApplying] = useState(false);
-    const [value, setValue] = useState('');
+    const [value, setValue] = useState(title);
 
     useEffect(() => {
         const x = async () => {

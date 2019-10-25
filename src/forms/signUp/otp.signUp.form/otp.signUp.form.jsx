@@ -10,7 +10,7 @@ const OtpSignUpForm = ({setData, next, data}) => {
         <FormCreator
             formTemplate={otpSignUpTForm}
             buttonType='block'
-            submitButtonText='Next'
+            submitButtonText='Create my account'
             onSubmit={(objForm) => {
                 setData({
                     ...data,

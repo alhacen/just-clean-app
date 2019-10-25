@@ -32,7 +32,7 @@ const SignUpSelection = ({type, setData, next, data}) => {
 };
 
 
-const SignUpCard = ({subTitle, component: Component, type, history}) => {
+const SignUpCard = ({subTitle, component: Component, type, history, initialValues}) => {
 
     /*
     0: Basic details
@@ -67,7 +67,7 @@ const SignUpCard = ({subTitle, component: Component, type, history}) => {
 
     switch (state) {
         case 0:
-            component = <Component next={() => setState(state + 1)} setData={setData} data={data}/>;
+            component = <Component initialValues={initialValues} next={() => setState(state + 1)} setData={setData} data={data}/>;
             break;
         case 1:
             component = <SignUpSelection type={type} setData={setData} next={() => setState(state + 1)} data={data}/>;

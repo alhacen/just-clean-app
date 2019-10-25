@@ -11,7 +11,7 @@ const AddApplicationForm = ({history, title}) => {
     const form = (
         // @ts-ignore
         <FormCreator
-            formTemplate={addApplicationTForm()}
+            formTemplate={addApplicationTForm}
             initialValue={async () => ({title: title})}
             buttonType='block'
             submitButtonText='Next'

@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import {Link} from 'react-router-dom';
-import {Typography, Table, Button, notification} from 'antd';
+import {Typography, Table, Button, notification, Row} from 'antd';
 import {loadSecureUrl} from 'helpers/api/main.api.helper';
 import JobImage from 'components/jobImage';
 
@@ -82,18 +82,22 @@ const HomeEmployer = () => {
 
             <br/>
             <br/>
-            <Table columns={columns} dataSource={data}/>
-            <br/>
             <Title level={3}>
                 Seekers available for hiring
             </Title>
-
-            {Object.keys(seekers).map(title => (
-                <Link to={'/job/add/' + btoa(title) + '/'}>
-                    <JobImage label={title} count={seekers[title]}/>
-                </Link>
-            ))}
-
+            <Row>
+                {Object.keys(seekers).map(title => (
+                    <Link to={'/job/add/' + btoa(title) + '/'}>
+                        <JobImage label={title} count={seekers[title]}/>
+                    </Link>
+                ))}
+            </Row>
+            <br/>
+            <br/>
+            <Title level={3}>
+                Your recruitment
+            </Title>
+            <Table columns={columns} dataSource={data}/>
         </div>
     )
 };

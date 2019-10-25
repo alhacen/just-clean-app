@@ -4,12 +4,12 @@ import FormCreator from 'components/formCreator';
 import {seekerSignUpTForm} from 'forms/signUp/seeker.signUp.form/seeker.signUp.tForm';
 
 
-const SeekerSignUpForm = ({next, setData, data}) => {
+const SeekerSignUpForm = ({next, setData, data, initialValues}) => {
     const form = (
         // @ts-ignore
         <FormCreator
-            formTemplate={seekerSignUpTForm}
-
+            formTemplate={seekerSignUpTForm('', initialValues)}
+            initialValues={async () => initialValues}
             buttonType='block'
             submitButtonText='Next'
             onSubmit={(objForm) => {
@@ -22,11 +22,14 @@ const SeekerSignUpForm = ({next, setData, data}) => {
         />
     );
 
+    console.log('FROM seeker.signUpForm', initialValues);
+
     return (
         <div>
             {form}
         </div>
     );
 };
+
 
 export default SeekerSignUpForm;

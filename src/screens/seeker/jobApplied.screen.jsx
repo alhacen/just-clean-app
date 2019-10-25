@@ -41,9 +41,30 @@ const JobAppliedScreen = () => {
                         </Card>
                     ) : null}
 
-                    {jobs.map(job => {
+                    {jobs.map((job, index) => {
+                        const status = (() => {
+                            switch (job.status) {
+                                case 'A':
+                                    return 'Applied';
+                                case 'S':
+                                    return 'Seen';
+                                case 'R':
+                                    return 'Rejected';
+                                case 'D':
+                                    return 'Selected';
+                                case 'J':
+                                    return 'Joined';
+                                default:
+                                    return 'Unknown';
+                            }
+                        })();
+
+                        if (status === 'Joined')
+                            return null;
+
                         return (
-                            <Card bordered={false}>
+                            <Card key={index.toString()} bordered={false}
+                                  style={{backgroundColor: status === 'Selected' ? '#00E57F' : null}}>
                                 <Descriptions title={`${job.job.organisation} - ${job.job.title}`}>
 
                                     <Descriptions.Item label='Applied on'>
@@ -58,25 +79,20 @@ const JobAppliedScreen = () => {
                                         {job.job.salary_range}
                                     </Descriptions.Item>
 
+                                    <Descriptions.Item label='Last updated'>
+                                        {new Date(job.status_changed).toLocaleString()}
+                                    </Descriptions.Item>
+
                                     <Descriptions.Item label='Status'>
-                                        {(() => {
-                                            switch (job.status) {
-                                                case 'A':
-                                                    return 'Applied';
-                                                case 'S':
-                                                    return 'Seen';
-                                                case 'R':
-                                                    return 'Rejected';
-                                                case 'D':
-                                                    return 'Selected';
-                                                case 'J':
-                                                    return 'Joined';
-                                                default:
-                                                    return 'Unknown';
-                                            }
-                                        })()}
+                                        {status}
                                     </Descriptions.Item>
                                 </Descriptions>
+                                <br/>
+                                <b>
+                                     Reporting Location
+                                </b>
+                                <br/>
+                                {job.job.reporting_location}
                             </Card>
                         );
                     })}
