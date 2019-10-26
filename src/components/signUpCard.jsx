@@ -60,6 +60,11 @@ const SignUpCard = ({subTitle, component: Component, type, history, initialValue
             history.push('/welcome/');
         } catch (e) {
             setState(3);
+            console.log('AAA', e.data);
+            notification.error({
+                message: 'An error occurred during signup.',
+                description: e.data.detail
+            })
         }
     };
 

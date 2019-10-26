@@ -14,6 +14,10 @@ export const COMMON_ROUTES = [
         title: 'Sign In',
         screen: lazy(() => import('screens/signIn.screen')),
     }, {
+        path: '/forgot-password/',
+        title: 'Reset your password',
+        screen: lazy(() => import('screens/forgotPassword.screen')),
+    }, {
         path: '/seeker/sign-up/',
         title: 'Sign Up and get Hired',
         screen: lazy(() => import('screens/seeker/signUp.screen')),
