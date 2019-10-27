@@ -6,7 +6,7 @@ import {signInWithOtp, signInWithPassword, userMeta} from 'helpers/api/main.api.
 export const saveToken = (token) => {
     reactLocalStorage.setObject('API_TOKENS', {
         ...token,
-        expires: JSON.parse(atob(token.access.split('.')[1])).exp,
+        expires: parseInt(JSON.parse(atob(token.access.split('.')[1])).exp) * 1000,
     });
 };
 

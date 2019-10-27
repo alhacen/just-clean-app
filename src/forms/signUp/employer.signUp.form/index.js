@@ -1,3 +1,3 @@
-import SignInForm from './employer.signUp.form';
+import SignUpForm from './employer.signUp.form';
 
-export default SignInForm;
+export default SignUpForm;

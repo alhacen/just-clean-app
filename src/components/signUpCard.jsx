@@ -7,6 +7,7 @@ import OtpSignUpForm from 'forms/signUp/otp.signUp.form';
 import PasswordSignUpForm from 'forms/signUp/passoword.SignUp.form/password.signUp.form';
 import {seekerSignUp} from 'helpers/api/seeker.api.helper';
 import {employerSignUp} from 'helpers/api/employer.api.helper';
+import {loadOpenUrl} from 'helpers/api/main.api.helper';
 
 
 const {Title, Text} = Typography;
@@ -20,6 +21,9 @@ const SignUpSelection = ({type, setData, next, data}) => {
             Component = OtpSignUpForm;
             break;
         case 'EMPLOYER':
+            Component = PasswordSignUpForm;
+            break;
+        case 'PARTNER':
             Component = PasswordSignUpForm;
             break;
         default:
@@ -51,6 +55,11 @@ const SignUpCard = ({subTitle, component: Component, type, history, initialValue
                 await seekerSignUp(data);
             if (type === 'EMPLOYER')
                 await employerSignUp(data);
+            if (type === 'PARTNER')
+                await loadOpenUrl('/partner/sign-up/', {
+                    method: 'POST',
+                    data: data
+                });
 
             notification.success({
                 message: 'Created your account',

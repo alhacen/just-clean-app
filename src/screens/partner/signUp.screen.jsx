@@ -1,5 +1,5 @@
 import React from 'react';
-import SignUpCard from 'components/employer/signUp';
+import SignUpCard from 'components/partner/signUp';
 
 const SignUpScreen = () => (
     <div className='full-page center-hv'>

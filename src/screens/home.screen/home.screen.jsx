@@ -67,7 +67,7 @@ function HomeScreen() {
                                     link='/seeker/sign-up/'/>
                         <HomeButton text='Job Seeker Premium' hindi='नौकरी खोजने वालों के लिए प्रीमियम सर्विस'
                                     background='#AFE13A'/>
-                        <HomeButton text='Partner' hindi='पार्टनरों के लिए' background='#DCC83A'/>
+                        <HomeButton text='Partner' hindi='पार्टनरों के लिए' background='#DCC83A' link='/partner/sign-up/'/>
                         <HomeButton text='Employers' hindi='नियोक्ताओं के लिए' background='#081951'
                                     link='/employer/sign-up/'/>
                         <HomeButton text='Training' hindi='प्रशिक्षण' background='#414141'/>

@@ -18,6 +18,7 @@ class SignInForm extends React.Component {
         e.preventDefault();
         this.props.form.validateFields(async (err, values) => {
             if (!err) {
+                console.log(values, 'VALUE SIGNIN');
                 this.props.signIn(values.username, values.password || values.otp, this.state.loginType);
             }
         });
@@ -113,7 +114,7 @@ class SignInForm extends React.Component {
                         rules: [{
                             required: true,
                             min: isOTPLogin? 4 : 6,
-                            message: `Please input your ${isOTPLogin ? '6 digit OTP' : 'password'}!`
+                            message: `Please input your ${isOTPLogin ? '4 digit OTP' : 'password'}!`
                         }],
                     })(
                         <Input

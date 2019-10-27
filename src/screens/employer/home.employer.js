@@ -1,45 +1,13 @@
 import React, {useState, useEffect} from 'react';
 import {Link} from 'react-router-dom';
-import {Typography, Table, Button, notification, Row} from 'antd';
+import {Typography, Button, notification, Row} from 'antd';
 import {loadSecureUrl} from 'helpers/api/main.api.helper';
 import JobImage from 'components/jobImage';
 
 const {Title} = Typography;
-const columns = [
-    {
-        title: 'Title',
-        dataIndex: 'title',
-        key: 'title',
-        render: (text, col) => <Link to={`/applications/${col.id}/`}>{text}</Link>,
-    }, {
-        title: 'Location',
-        dataIndex: 'location',
-        key: 'location',
-    }, {
-        title: 'Last Date of application',
-        dataIndex: 'apply_till',
-        key: 'apply_till',
-    }, {
-        title: 'Status',
-        dataIndex: 'status',
-        render: (status) => {
-            switch (status) {
-                case 'V':
-                    return 'Verified';
-                case 'P':
-                    return 'Pending';
-                case 'B':
-                    return 'Not Verified';
-                default:
-                    return 'Unknown';
-            }
-        }
-    }
-];
 
 
 const HomeEmployer = () => {
-    const [data, setData] = useState([]);
     const [seekers, setSeekers] = useState({});
 
     useEffect(() => {
@@ -55,21 +23,8 @@ const HomeEmployer = () => {
             }
         };
 
-        const y = async () => {
-            try {
-                setData(
-                    await loadSecureUrl('/employer/jobs/')
-                )
-            } catch (e) {
-                notification.error({
-                    message: 'Error in loading added jobs'
-                })
-            }
-        };
-
         x();
-        y();
-    }, [setData, setSeekers]);
+    }, [setSeekers]);
 
     return (
         <div className='container'>
@@ -77,6 +32,12 @@ const HomeEmployer = () => {
             <Link to='/job/add/'>
                 <Button type='primary' icon='plus'>
                     Add Job
+                </Button>
+            </Link>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <Link to='/job/'>
+                <Button>
+                    Your Jobs
                 </Button>
             </Link>
 
@@ -92,12 +53,6 @@ const HomeEmployer = () => {
                     </Link>
                 ))}
             </Row>
-            <br/>
-            <br/>
-            <Title level={3}>
-                Your recruitment
-            </Title>
-            <Table columns={columns} dataSource={data}/>
         </div>
     )
 };

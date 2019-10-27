@@ -16,6 +16,8 @@ const SignInCard = ({signIn: signInAction, isAuthenticated, user}) => {
                 return <Redirect to='/seeker/'/>;
             case 'E':
                 return <Redirect to='/employer/'/>;
+            case 'P':
+                return <Redirect to='/partner/' />;
             default:
                 return <Redirect to='/'/>;
         }

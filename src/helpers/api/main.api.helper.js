@@ -25,19 +25,21 @@ const getAccessToken = () => {
   // eslint-disable-next-line no-async-promise-executor
   return new Promise(async (resolve, reject) => {
     const data = reactLocalStorage.getObject('API_TOKENS');
+    console.log(data, 'DATA Token');
 
     if (!data) return reject('No User found');
 
     let accessToken = '';
     const expires = new Date(data.expires);
     const currentTime = new Date();
-    console.log(expires, currentTime);
+    console.log(expires, currentTime, 'Expires');
 
     if (expires > currentTime) {
       accessToken = data.access;
 
     } else {
       try {
+        console.log('Getting new token');
         const newToken = await loadOpenUrl(REFRESH_ACCESS_TOKEN, {
           method: 'post',
           data: {
@@ -48,13 +50,6 @@ const getAccessToken = () => {
 
         saveToken(data);
 
-        // reactLocalStorage.setObject('API_TOKENS', {
-        //   tokens: {
-        //     ...data.tokens,
-        //     access: accessToken,
-        //   },
-        //   expires: newToken.expires,
-        // });
       } catch (e) {
         try {
           if (e.data.code === 'token_not_valid') signInAgainNotification();

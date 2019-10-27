@@ -1,6 +1,6 @@
 import React from 'react';
 import Portal from 'components/portal';
-import {EMPLOYER_COMMON_ROUTES, EMPLOYER_EXTRA_ROUTES} from 'constants/routes/main.routes.constant';
+import {EMPLOYER_COMMON_ROUTES, EMPLOYER_EXTRA_ROUTES} from 'constants/routes/employer.routes.constant';
 
 const EmployerMain = () => {
     return (
