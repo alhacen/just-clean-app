@@ -2,20 +2,23 @@ import {FORM_ELEMENT} from 'constants/formFields.constant';
 import {educationalQualificationChoices, jobTitleChoices, stateChoices} from 'constants/choices';
 
 export const seekerSignUpTForm = (state, initialValues) => {
-
-    console.log(initialValues, 'SEEEEEEE');
-
     return [
         {
             label: 'Name',
             name: 'name',
             type: FORM_ELEMENT.INPUT,
             rules: [{required: true}],
+            kwargs: {
+                placeholder: 'प्रत्याशी का नाम'
+            }
         }, {
             label: 'Father\'s Name',
             name: 'fathers_name',
             type: FORM_ELEMENT.INPUT,
             rules: [{required: true},],
+            kwargs: {
+                placeholder: 'पिता का नाम'
+            }
         }, {
             label: 'Gender',
             name: 'gender',
@@ -25,20 +28,23 @@ export const seekerSignUpTForm = (state, initialValues) => {
                 'M': 'Male',
                 'F': 'Female',
                 'O': 'Others'
-            }
+            },
         }, {
             label: 'Date of birth',
             name: 'dob',
             type: FORM_ELEMENT.DATE_TIME_PICKER,
             rules: [{required: true},],
             kwargs: {
-                format: 'YYYY-MM-DD',
-            },
+                placeholder: 'जन्म की तारीख'
+            }
         }, {
             label: 'Address',
             name: 'address',
             type: FORM_ELEMENT.TEXTAREA,
             rules: [{required: true},],
+            kwargs: {
+                placeholder: 'पता'
+            }
         }, {
             label: 'City',
             name: 'city',
@@ -61,6 +67,9 @@ export const seekerSignUpTForm = (state, initialValues) => {
             type: FORM_ELEMENT.SELECT,
             options: educationalQualificationChoices,
             rules: [{required: true},],
+            kwargs: {
+                placeholder: 'शैक्षिक योग्यता'
+            }
         }, {
             label: 'Your experience',
             name: 'experience',
@@ -74,22 +83,31 @@ export const seekerSignUpTForm = (state, initialValues) => {
                 4: '3 year to 4 year',
                 5: 'Four year to 5 year',
                 6: 'Above 5'
+            },
+            kwargs: {
+                placeholder: 'काम का अनुभव'
             }
         }, {
             label: 'Aadhar Number',
             name: 'aadhar',
             type: FORM_ELEMENT.INPUT,
             rules: [{required: true}, {pattern: /^\d{12}$/, message: 'Not a valid aadhar number'}],
+            kwargs: {
+                placeholder: 'आधार नंबर'
+            }
         }, {
             label: 'Job looking for',
             name: 'job_title',
             type: FORM_ELEMENT.SELECT,
             rules: [{required: true},],
-            options: jobTitleChoices
+            options: jobTitleChoices,
+            kwargs: {
+                placeholder: 'किस नौकरी के लिए'
+            }
         }, {
             name: 'partner_code',
             type: FORM_ELEMENT.HIDDEN,
             initialValue: initialValues['partner']
         }
     ];
-}
+};

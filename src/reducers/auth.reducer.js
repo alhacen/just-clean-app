@@ -1,8 +1,9 @@
-import {USER_SIGNED_IN, USER_SIGNED_OUT} from 'actions';
+import {CONNECTED_WITH_SERVER, USER_SIGNED_IN, USER_SIGNED_OUT, TRYING_CONNECTION_WITH_SEVER} from 'actions';
 import {reactLocalStorage} from 'reactjs-localstorage';
 
 const initialState = {
     isAuthenticated: false,
+    isConnected: false,
     user: {
         'name': '',
         'email': '',
@@ -17,6 +18,7 @@ export const auth = (state = initialState, action) => {
             return {
                 ...state,
                 isAuthenticated: true,
+                isConnected: true,
                 user: action.user
             };
         case USER_SIGNED_OUT:
@@ -24,6 +26,17 @@ export const auth = (state = initialState, action) => {
             return {
                 ...state,
                 isAuthenticated: false
+            };
+
+        case CONNECTED_WITH_SERVER:
+            return {
+                ...state,
+                isConnected: true
+            };
+        case TRYING_CONNECTION_WITH_SEVER:
+            return {
+                ...state,
+                isConnected: false
             };
 
         default:

@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from 'react';
-import {Button, Typography, notification, Row} from 'antd';
+import {Button, Typography, notification, Row, Card, Skeleton} from 'antd';
 import {Link} from 'react-router-dom';
 import {loadSecureUrl} from 'helpers/api/main.api.helper';
 import JobImage from 'components/jobImage';
@@ -9,6 +9,7 @@ const {Title} = Typography;
 const Home = () => {
 
     const [jobs, setJobs] = useState({});
+    const [loading, setLoading] = useState(true);
 
     useEffect(() => {
         const x = async () => {
@@ -21,6 +22,8 @@ const Home = () => {
                     message: 'Error loading jobs'
                 })
             }
+
+            setLoading(false);
         };
 
         x();
@@ -47,10 +50,14 @@ const Home = () => {
                 </Title>
                 <br/>
                 <Row>
+                    {loading ? (
+                        <Card>
+                            <Skeleton/>
+                        </Card>
+                    ) : null}
+
                     {Object.keys(jobs).map(title => (
-                        <Link to={'/jobs/search/' + btoa(title) + '/'}>
-                            <JobImage label={title} count={jobs[title]}/>
-                        </Link>
+                        <JobImage link={'/jobs/search/' + btoa(title) + '/'} label={title} count={jobs[title]}/>
                     ))}
                 </Row>
             </div>

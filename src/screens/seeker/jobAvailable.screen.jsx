@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import {Button, Card, Descriptions, Typography, Empty, Select, Drawer, Input, notification} from 'antd';
+import {Button, Card, Descriptions, Typography, Empty, Select, Drawer, Input, notification, Skeleton} from 'antd';
 import {withRouter} from 'react-router-dom';
 import {loadSecureUrl} from 'helpers/api/main.api.helper';
 import {jobTitleChoices} from 'constants/choices';
@@ -19,16 +19,20 @@ const JobAvailable = ({history, match}) => {
     const [drawerOpen, toggleDrawer] = useState(false);
     const [applyingFor, setApplyingFor] = useState(0);
     const [answer, setAnswer] = useState('');
+    const [loading, setLoading] = useState(true);
 
     useEffect(() => {
         const x = async () => {
+            setLoading(true);
             setJobs(
                 await loadSecureUrl('/seeker/job/available/', {
                     params: {
                         title: value
                     }
                 })
-            )
+            );
+
+            setLoading(false);
         };
 
         x();
@@ -57,95 +61,103 @@ const JobAvailable = ({history, match}) => {
                     </div>
 
                     <br/>
-                    {jobs.length === 0 ? (
-                        <Card>
-                            <Empty description='No Job Available for now'/>
-                        </Card>
-                    ) : (
-                        <Drawer
-                            title="Apply"
-                            visible={drawerOpen}
-                            onClose={() => toggleDrawer(false)}
-                            width={310}
-                        >
 
-                            {
-                                jobs[applyingFor].eligibility ? (
-                                    <>
-                                        <Title level={3}>
-                                            Eligibility
-                                        </Title>
-                                        <p>{jobs[applyingFor].eligibility}</p>
-                                        <br/>
-                                    </>
-                                ) : null
-                            }
 
-                            {
-                                jobs[applyingFor].eligibility ? (
-                                    <>
-                                        <Title level={3}>
-                                            Additional Info
-                                        </Title>
-                                        <p>{jobs[applyingFor].additional_info}</p>
-                                        <br/>
-                                    </>
-                                ) : null
-                            }
-
-                            {
-                                jobs[applyingFor].questions ? (
-                                    <>
-                                        <hr/>
-                                        <Title level={3}>
-                                            Questions
-                                        </Title>
-                                        <p>{jobs[applyingFor].questions}</p>
-                                        <br/>
-
-                                        <Input.TextArea
-                                            name="answers"
-                                            id="answers"
-                                            cols="30"
-                                            rows="10"
-                                            placeholder={'Your answers'}
-                                            required
-                                            onChange={e => setAnswer(e.target.value)}
-                                        >
-                                        </Input.TextArea>
-                                    </>
-                                ) : null
-                            }
-                            <br/>
-                            <br/>
-                            <Button
-                                loading={applying}
-                                type='primary'
-                                style={{width: '100%'}}
-                                onClick={async () => {
-                                   try {
-                                       setApplying(true);
-                                       await loadSecureUrl(`/seeker/job/apply/${jobs[applyingFor].id}/`, {
-                                           method: 'POST',
-                                           data: {
-                                               answer: answer
-                                           }
-                                       });
-                                       history.push('/');
-                                   } catch (e) {
-                                       notification.error({
-                                           message: 'Unknown error occurred'
-                                       });
-                                       setApplying(false);
-                                   }
-                               }}
-
+                    {jobs.length === 0 ?
+                        loading ? (
+                            <Card>
+                                <Skeleton/>
+                            </Card>
+                        ) : (
+                            <Card>
+                                <Empty description='No Job Available for now'/>
+                            </Card>
+                        )
+                        : (
+                            <Drawer
+                                title="Apply"
+                                visible={drawerOpen}
+                                onClose={() => toggleDrawer(false)}
+                                width={310}
                             >
-                                Apply
-                            </Button>
 
-                        </Drawer>
-                    )}
+                                {
+                                    jobs[applyingFor].eligibility ? (
+                                        <>
+                                            <Title level={3}>
+                                                Eligibility
+                                            </Title>
+                                            <p>{jobs[applyingFor].eligibility}</p>
+                                            <br/>
+                                        </>
+                                    ) : null
+                                }
+
+                                {
+                                    jobs[applyingFor].eligibility ? (
+                                        <>
+                                            <Title level={3}>
+                                                Additional Info
+                                            </Title>
+                                            <p>{jobs[applyingFor].additional_info}</p>
+                                            <br/>
+                                        </>
+                                    ) : null
+                                }
+
+                                {
+                                    jobs[applyingFor].questions ? (
+                                        <>
+                                            <hr/>
+                                            <Title level={3}>
+                                                Questions
+                                            </Title>
+                                            <p>{jobs[applyingFor].questions}</p>
+                                            <br/>
+
+                                            <Input.TextArea
+                                                name="answers"
+                                                id="answers"
+                                                cols="30"
+                                                rows="10"
+                                                placeholder={'Your answers'}
+                                                required
+                                                onChange={e => setAnswer(e.target.value)}
+                                            >
+                                            </Input.TextArea>
+                                        </>
+                                    ) : null
+                                }
+                                <br/>
+                                <br/>
+                                <Button
+                                    loading={applying}
+                                    type='primary'
+                                    style={{width: '100%'}}
+                                    onClick={async () => {
+                                        try {
+                                            setApplying(true);
+                                            await loadSecureUrl(`/seeker/job/apply/${jobs[applyingFor].id}/`, {
+                                                method: 'POST',
+                                                data: {
+                                                    answer: answer
+                                                }
+                                            });
+                                            history.push('/');
+                                        } catch (e) {
+                                            notification.error({
+                                                message: 'Unknown error occurred'
+                                            });
+                                            setApplying(false);
+                                        }
+                                    }}
+
+                                >
+                                    Apply
+                                </Button>
+
+                            </Drawer>
+                        )}
                     {jobs.map((job, index) => {
                         return (
                             <Card bordered={false} key={index.toString()}>

@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from 'react';
-import {Button, notification, Row, Typography} from 'antd';
+import {Button, notification, Row, Skeleton, Typography, Card} from 'antd';
 import {Link} from 'react-router-dom';
 import {loadSecureUrl} from 'helpers/api/main.api.helper';
 import JobImage from 'components/jobImage';
@@ -14,7 +14,6 @@ const AddSeekerButton = () => {
     useEffect(() => {
         const x = async () => {
             const data = await loadSecureUrl('/partner/code/');
-            console.log(data, 'DDDDDD');
             setCode(
                 data.code
             )
@@ -42,6 +41,7 @@ const AddSeekerButton = () => {
 const Home = () => {
 
     const [jobs, setJobs] = useState({});
+    const [loading, setLoading] = useState(true);
 
     useEffect(() => {
         const x = async () => {
@@ -54,6 +54,8 @@ const Home = () => {
                     message: 'Error loading jobs'
                 })
             }
+
+            setLoading(false);
         };
 
         x();
@@ -80,6 +82,11 @@ const Home = () => {
             <Title level={4}>
                 Seekers Needed
             </Title>
+            {loading? (
+                <Card>
+                    <Skeleton />
+                </Card>
+            ) : null}
             <Row>
                 {Object.keys(jobs).map(title => (
                     <JobImage label={title} count={jobs[title]}/>

@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import {Link} from 'react-router-dom';
-import {Typography, Button, notification, Row} from 'antd';
+import {Typography, Button, notification, Row, Skeleton, Card} from 'antd';
 import {loadSecureUrl} from 'helpers/api/main.api.helper';
 import JobImage from 'components/jobImage';
 
@@ -9,6 +9,7 @@ const {Title} = Typography;
 
 const HomeEmployer = () => {
     const [seekers, setSeekers] = useState({});
+    const [loading, setLoading] = useState(true);
 
     useEffect(() => {
         const x = async () => {
@@ -21,6 +22,8 @@ const HomeEmployer = () => {
                     message: 'Error in loading seekers'
                 })
             }
+
+            setLoading(false);
         };
 
         x();
@@ -46,11 +49,16 @@ const HomeEmployer = () => {
             <Title level={3}>
                 Seekers available for hiring
             </Title>
-            <Row>
+
+            {loading ? (
+                <Card>
+                    <Skeleton/>
+                </Card>
+            ) : null}
+
+            <Row style={{textAlign: 'center'}}>
                 {Object.keys(seekers).map(title => (
-                    <Link to={'/job/add/' + btoa(title) + '/'}>
-                        <JobImage label={title} count={seekers[title]}/>
-                    </Link>
+                    <JobImage link={'/job/add/' + btoa(title) + '/'} label={title} count={seekers[title]}/>
                 ))}
             </Row>
         </div>

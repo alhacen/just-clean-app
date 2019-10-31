@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from 'react';
-import {Typography, Table, Button} from 'antd';
+import {Typography, Table, Button, Card, Skeleton} from 'antd';
 import {withRouter} from 'react-router-dom';
 import {loadSecureUrl} from 'helpers/api/main.api.helper';
 
@@ -59,12 +59,14 @@ const JobApplication = ({match}) => {
     const [data, setData] = useState([]);
     const [selectedRow, setSelectedRow] = useState([]);
     const [updating, setUpdating] = useState(false);
+    const [loading, setLoading] = useState(true);
 
     useEffect(() => {
         const x = async () => {
             setData(
                 await loadSecureUrl(`/employer/jobs/${job_id}/`)
-            )
+            );
+            setLoading(false);
         };
 
         x();
@@ -110,13 +112,22 @@ const JobApplication = ({match}) => {
             </Button.Group>
             <br/>
             <br/>
-            <Table columns={columns} dataSource={data} rowSelection={rowSelection} expandedRowRender={seeker => (
-                <div>
-                    {seeker.address}
-                    <br/>
-                    PinCode: {seeker.pin_code}
-                </div>
-            )}/>
+            {loading ? (
+                    <Card>
+                        <Skeleton/>
+                    </Card>
+                ) :
+                <Table columns={columns} dataSource={data} rowSelection={rowSelection} expandedRowRender={seeker => (
+                    <div>
+                        {seeker.address}
+                        <br/>
+                        PinCode: {seeker.pin_code}
+                        <br/>
+                        <br/>
+                    </div>
+                )}/>
+            }
+
         </div>
     )
 };

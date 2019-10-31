@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from 'react';
-import {Typography, Table} from 'antd';
+import {Typography, Table, Card, Skeleton} from 'antd';
 import {withRouter} from 'react-router-dom';
 import {loadSecureUrl} from 'helpers/api/main.api.helper';
 
@@ -35,12 +35,15 @@ const columns = [
 
 const MySeekers = ({match}) => {
     const [data, setData] = useState([]);
+    const [loading, setLoading] = useState(true);
+
 
     useEffect(() => {
         const x = async () => {
             setData(
                 await loadSecureUrl(`/partner/seeker/`)
-            )
+            );
+            setLoading(false);
         };
 
         x();
@@ -50,13 +53,19 @@ const MySeekers = ({match}) => {
     return (
         <div className='container'>
             <Title>Seeker You Added</Title>
-            <Table columns={columns} dataSource={data} expandedRowRender={seeker => (
-                <div>
-                    {seeker.address}
-                    <br/>
-                    PinCode: {seeker.pin_code}
-                </div>
-            )}/>
+            {loading ? (
+                <Card>
+                    <Skeleton/>
+                </Card>
+            ) : (
+                <Table columns={columns} dataSource={data} expandedRowRender={seeker => (
+                    <div>
+                        {seeker.address}
+                        <br/>
+                        PinCode: {seeker.pin_code}
+                    </div>
+                )}/>
+            )}
         </div>
     )
 };

@@ -17,7 +17,7 @@ export const SEEKER_COMMON_ROUTES = [
         path: '/jobs/applied/',
         title: 'Applied jobs',
         name: 'Job Applied',
-        icon: '',
+        icon: 'audit',
         screen: lazy(() => import('screens/seeker/jobApplied.screen')),
     },
 ];

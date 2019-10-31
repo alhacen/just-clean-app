@@ -23,7 +23,7 @@ const PortalNavigator = ({routes}) => {
                 mode='vertical'
                 theme='light'
                 forceSubMenuRender
-                inlineCollapsed={selectScreen(null, true)}
+                inlineCollapsed={selectScreen(null, false)}
                 className={selectScreen(null, 'full-page')}
                 selectedKeys={[]}>
                 {routes.map((route, index) => (
@@ -45,7 +45,8 @@ const PortalNavigator = ({routes}) => {
                 style={{
                     position: 'fixed',
                     top: 64,
-                    left: 0
+                    left: 0,
+                    width: 256
                 }}
             >
                 {menu}

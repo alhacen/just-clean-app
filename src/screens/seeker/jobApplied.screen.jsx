@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from 'react';
-import {Button, Card, Descriptions, Typography, Empty} from 'antd';
+import {Button, Card, Descriptions, Typography, Empty, Skeleton} from 'antd';
 import {Link} from 'react-router-dom';
 import {loadSecureUrl} from 'helpers/api/main.api.helper';
 
@@ -8,12 +8,15 @@ const {Title} = Typography;
 const JobAppliedScreen = () => {
 
     const [jobs, setJobs] = useState([]);
+    const [loading, setLoading] = useState(true);
 
     useEffect(() => {
         const x = async () => {
             setJobs(
                 await loadSecureUrl('/seeker/job/apply/')
-            )
+            );
+
+            setLoading(false);
         };
 
         x();
@@ -31,15 +34,20 @@ const JobAppliedScreen = () => {
                     <br/>
                     <br/>
                     <Title level={3}>Jobs Applied</Title>
-                    {jobs.length === 0 ? (
-                        <Card>
-                            <Empty description=''>
-                                <Link to='/jobs/'>
-                                    <Button>Find Jobs</Button>
-                                </Link>
-                            </Empty>
-                        </Card>
-                    ) : null}
+                    {jobs.length === 0 ?
+                        loading ? (
+                            <Card>
+                                <Skeleton/>
+                            </Card>
+                        ) : (
+                            <Card>
+                                <Empty description=''>
+                                    <Link to='/jobs/'>
+                                        <Button>Find Jobs</Button>
+                                    </Link>
+                                </Empty>
+                            </Card>
+                        ) : null}
 
                     {jobs.map((job, index) => {
                         const status = (() => {
@@ -89,7 +97,7 @@ const JobAppliedScreen = () => {
                                 </Descriptions>
                                 <br/>
                                 <b>
-                                     Reporting Location
+                                    Reporting Location
                                 </b>
                                 <br/>
                                 {job.job.reporting_location}

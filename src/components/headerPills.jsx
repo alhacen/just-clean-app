@@ -1,10 +1,11 @@
 import React from 'react';
+import {connect} from 'react-redux';
 import {Link} from 'react-router-dom';
 import {Button, Menu} from 'antd';
 
 const {Item} = Menu;
 
-const HeaderPills = ({isAuthenticated, user, signOut, mode}) => (
+const HeaderPills = ({isAuthenticated, user, signOut, mode, isConnected}) => (
     <Menu mode={mode} className='no-border' selectedKeys={[]} style={{border: '0 solid #000'}}>
         {isAuthenticated ? (
             <Item>
@@ -16,7 +17,7 @@ const HeaderPills = ({isAuthenticated, user, signOut, mode}) => (
         <Item>
             {!isAuthenticated ? (
                 <Link to='/sign-in/'>
-                    <Button type='primary'>
+                    <Button type='primary' loading={!isConnected}>
                         Sign In
                     </Button>
                 </Link>
@@ -33,5 +34,9 @@ const HeaderPills = ({isAuthenticated, user, signOut, mode}) => (
     </Menu>
 );
 
+const mapStateToProps = (state) => ({
+    isConnected: state.auth.isConnected
+});
 
-export default HeaderPills;
+
+export default connect(mapStateToProps)(HeaderPills);

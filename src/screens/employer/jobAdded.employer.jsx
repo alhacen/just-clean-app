@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import {Link} from 'react-router-dom';
-import {Typography, Table, Button, notification} from 'antd';
+import {Typography, Table, Button, notification, Card, Skeleton} from 'antd';
 import {loadSecureUrl} from 'helpers/api/main.api.helper';
 
 const {Title} = Typography;
@@ -39,6 +39,7 @@ const columns = [
 
 const JobAdded = () => {
     const [data, setData] = useState([]);
+    const [loading, setLoading] = useState(true);
 
     useEffect(() => {
         const y = async () => {
@@ -51,6 +52,8 @@ const JobAdded = () => {
                     message: 'Error in loading added jobs'
                 })
             }
+
+            setLoading(false);
         };
 
         y();
@@ -66,7 +69,11 @@ const JobAdded = () => {
             </Link>
             <br/>
             <br/>
-            <Table columns={columns} dataSource={data}/>
+            {loading ? (
+                <Card>
+                    <Skeleton/>
+                </Card>
+            ) : <Table columns={columns} dataSource={data}/>}
         </div>
     )
 };

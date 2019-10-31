@@ -28,7 +28,7 @@ const Portal = ({
             <BrowserRouter basename={baseLocation}>
                 <SideBar routes={sideRoutes}/>
                 <div className='full-page' style={{
-                    paddingLeft: selectScreen(0, 80),
+                    paddingLeft: selectScreen(0, 256),
                     transition: '0.4s',
                 }}>
                     <Suspense fallback={<LoadingScreen/>}>

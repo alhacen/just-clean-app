@@ -1,7 +1,7 @@
 import {reactLocalStorage} from 'reactjs-localstorage';
 import {notification} from 'antd';
-import {USER_SIGNED_IN} from 'actions/index';
-import {signInWithOtp, signInWithPassword, userMeta} from 'helpers/api/main.api.helper';
+import {CONNECTED_WITH_SERVER, TRYING_CONNECTION_WITH_SEVER, USER_SIGNED_IN} from 'actions/index';
+import {loadOpenUrl, signInWithOtp, signInWithPassword, userMeta} from 'helpers/api/main.api.helper';
 
 export const saveToken = (token) => {
     reactLocalStorage.setObject('API_TOKENS', {
@@ -12,6 +12,10 @@ export const saveToken = (token) => {
 
 export const signIn = (username, password, type) => async (dispatch) => {
     try {
+        dispatch({
+            type: TRYING_CONNECTION_WITH_SEVER
+        });
+
         let jwt;
 
         if (type === 'O') {
@@ -30,6 +34,7 @@ export const signIn = (username, password, type) => async (dispatch) => {
 
     } catch (e) {
         console.log(e);
+        dispatch({type: CONNECTED_WITH_SERVER});
         notification.error({
             message: 'Error in signing you in',
             description: 'Invalid credentials'
@@ -46,5 +51,15 @@ export const checkUserAction = () => async (dispatch) => {
             localStorage.clear();
         }
     } else {
+        try{
+            await loadOpenUrl('ping/');
+            dispatch({type: CONNECTED_WITH_SERVER})
+        } catch (e) {
+            notification.error({
+                message: 'We are having trouble connecting with server',
+                description: 'Not all services will be available'
+            })
+        }
+
     }
 };
