@@ -75,12 +75,11 @@ const JobAvailable = ({history, match}) => {
                         )
                         : (
                             <Drawer
-                                title="Apply"
+                                title="Confirm your application"
                                 visible={drawerOpen}
                                 onClose={() => toggleDrawer(false)}
                                 width={310}
                             >
-
                                 {
                                     jobs[applyingFor].eligibility ? (
                                         <>
@@ -94,7 +93,7 @@ const JobAvailable = ({history, match}) => {
                                 }
 
                                 {
-                                    jobs[applyingFor].eligibility ? (
+                                    jobs[applyingFor].additional_info ? (
                                         <>
                                             <Title level={3}>
                                                 Additional Info
@@ -104,6 +103,18 @@ const JobAvailable = ({history, match}) => {
                                         </>
                                     ) : null
                                 }
+
+                                <Title level={3}>
+                                    Job Location
+                                </Title>
+                                <p>{jobs[applyingFor].location}</p>
+                                <br/>
+
+                                <Title level={3}>
+                                    Reporting Address
+                                </Title>
+                                <p>{jobs[applyingFor].reporting_location}</p>
+                                <br/>
 
                                 {
                                     jobs[applyingFor].questions ? (
@@ -143,7 +154,10 @@ const JobAvailable = ({history, match}) => {
                                                     answer: answer
                                                 }
                                             });
-                                            history.push('/');
+                                            notification.success({
+                                                message: 'Application added',
+                                            });
+                                            history.push('/jobs/applied/');
                                         } catch (e) {
                                             notification.error({
                                                 message: 'Unknown error occurred'
@@ -153,7 +167,7 @@ const JobAvailable = ({history, match}) => {
                                     }}
 
                                 >
-                                    Apply
+                                    Yes, please proceed
                                 </Button>
 
                             </Drawer>
@@ -171,8 +185,12 @@ const JobAvailable = ({history, match}) => {
                                         {new Date(job.apply_till).toLocaleString()}
                                     </Descriptions.Item>
 
-                                    <Descriptions.Item label='Salary range'>
+                                    <Descriptions.Item label='Salary CTC'>
                                         {job.salary_range}
+                                    </Descriptions.Item>
+
+                                    <Descriptions.Item label='Salary in Hand'>
+                                        {job.salary_range_in_hand}
                                     </Descriptions.Item>
 
                                     <Descriptions.Item label='Educational Qualification'>

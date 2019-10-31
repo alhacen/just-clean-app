@@ -2,8 +2,7 @@ import axios from 'axios';
 import {reactLocalStorage} from 'reactjs-localstorage';
 import {saveToken} from 'actions/auth.action';
 
-// const API_BASE_URL = 'https://justcleanrojgar.herokuapp.com/';
-const API_BASE_URL = 'http://localhost:8000/';
+const API_BASE_URL = process.env.REACT_APP_API_BASE_URL;
 
 axios.defaults.baseURL = API_BASE_URL;
 axios.defaults.headers.get['Content-Type'] = 'application/x-www-form-urlencoded';
