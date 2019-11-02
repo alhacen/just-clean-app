@@ -3,7 +3,7 @@ import {stateChoices} from 'constants/choices';
 
 export const partnerSignUpTForm = () => [
     {
-        label: 'Office Name',
+        label: 'Partner Name',
         name: 'name',
         type: FORM_ELEMENT.INPUT,
         rules: [{required: true}],

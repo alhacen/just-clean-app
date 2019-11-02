@@ -67,40 +67,39 @@ function HomeScreen() {
                                     link='/seeker/sign-up/'/>
                         <HomeButton text='Job Seeker Premium' hindi='नौकरी खोजने वालों के लिए प्रीमियम सर्विस'
                                     background='#AFE13A'/>
-                        <HomeButton text='Partner' hindi='पार्टनरों के लिए' background='#DCC83A' link='/partner/sign-up/'/>
+                        <HomeButton text='Partner' hindi='पार्टनरों के लिए' background='#DCC83A'
+                                    link='/partner/sign-up/'/>
                         <HomeButton text='Employers' hindi='नियोक्ताओं के लिए' background='#081951'
                                     link='/employer/sign-up/'/>
-                        <HomeButton text='Training' hindi='प्रशिक्षण' background='#414141'/>
+                        {/*<HomeButton text='Training' hindi='प्रशिक्षण' background='#414141'/>*/}
 
                     </Row>
                 </Col>
             </Row>
 
             <br/>
-            <br/>
-            <br/>
 
-            <div className='container' style={{textAlign: 'center'}}>
+            <div style={{textAlign: 'center'}}>
                 <Title>
                     We offer jobs for
                 </Title>
                 <Row style={{textAlign: 'center'}}>
-                    <JobImage label='Machine Operator / Helper'/>
-                    <JobImage label='Driver (Private Vehicles)'/>
-                    <JobImage label='Driver (Commercial Vehicles)'/>
-                    <JobImage label='Driver (Heavy Vehicles - Bus, Truck, Trailer, etc.)'/>
-                    <JobImage label='Security Staff'/>
-                    <JobImage label='Bouncer'/>
-                    <JobImage label='PSO (Personal Security Officer)'/>
-                    <JobImage label='Computer Operator'/>
-                    <JobImage label='Painter'/>
-                    <JobImage label='BPO / Call Centre'/>
-                    <JobImage label='Retail Sales Staff'/>
-                    <JobImage label='Web Developer'/>
-                    <JobImage label='Web Designer'/>
-                    <Col xs={12} sm={6} md={3} style={{margin: 10}}>
+                    <JobImage link='/seeker/sign-up/' label='Machine Operator / Helper'/>
+                    <JobImage link='/seeker/sign-up/' label='Driver (Private Vehicles)'/>
+                    <JobImage link='/seeker/sign-up/' label='Driver (Commercial Vehicles)'/>
+                    <JobImage link='/seeker/sign-up/' label='Driver (Heavy Vehicles - Bus, Truck, Trailer, etc.)'/>
+                    <JobImage link='/seeker/sign-up/' label='Security Staff'/>
+                    <JobImage link='/seeker/sign-up/' label='Bouncer'/>
+                    <JobImage link='/seeker/sign-up/' label='PSO (Personal Security Officer)'/>
+                    <JobImage link='/seeker/sign-up/' label='Computer Operator'/>
+                    <JobImage link='/seeker/sign-up/' label='Painter'/>
+                    <JobImage link='/seeker/sign-up/' label='BPO / Call Centre'/>
+                    <JobImage link='/seeker/sign-up/' label='Retail Sales Staff'/>
+                    <JobImage link='/seeker/sign-up/' label='Web Developer'/>
+                    <JobImage link='/seeker/sign-up/' label='Web Designer'/>
+                    <Col xs={12} sm={6} md={3}>
                         <Card bordered={false}
-                              style={{borderRadius: 10, height: 140, width: 175, textAlign: 'center'}}>
+                              style={{borderRadius: 0, height: 140, width: 175, textAlign: 'center'}}>
                             <img
                                 src={require('assets/images/jobs/job-seeker.png')}
                                 className='responsive-img'
@@ -129,12 +128,20 @@ function HomeScreen() {
                 </Col>
             </Row>
 
+            <Title level={3} style={{margin: 0, textAlign: 'center'}}>
+                About Just Clean Rojgar
+            </Title>
+
             <Row style={{padding: 20}}>
                 <Col xs={24} sm={12}>
-                    <iframe width="100%" height="315" title='About Just Clean'
-                            src="https://www.youtube.com/embed/Qy4Wq0CjGjw"/>
+                    <div className='video-container'>
+                        <iframe title="About Just Clean Rojgar" width="560" height="315"
+                                src="https://www.youtube-nocookie.com/embed/Qy4Wq0CjGjw?controls=0" frameBorder="0"
+                                allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+                                allowFullScreen></iframe>
+                    </div>
                 </Col>
-                <Col xs={24} sm={12} className='container'>
+                <Col xs={24} sm={12}>
                     <AboutUs/>
                 </Col>
             </Row>

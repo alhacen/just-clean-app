@@ -6,7 +6,7 @@ import {Button, Menu} from 'antd';
 const {Item} = Menu;
 
 const HeaderPills = ({isAuthenticated, user, signOut, mode, isConnected}) => (
-    <Menu mode={mode} className='no-border' selectedKeys={[]} style={{border: '0 solid #000'}}>
+    <Menu mode={mode} className='no-border' selectedKeys={[]} style={{border: '0 solid #000', bottom: -10, position: 'relative'}}>
         {isAuthenticated ? (
             <Item>
                 <Link to='/sign-in/'>
@@ -18,7 +18,7 @@ const HeaderPills = ({isAuthenticated, user, signOut, mode, isConnected}) => (
             {!isAuthenticated ? (
                 <Link to='/sign-in/'>
                     <Button type='primary' loading={!isConnected}>
-                        Sign In
+                        Sign In (लॉग इन करें)
                     </Button>
                 </Link>
             ) : (

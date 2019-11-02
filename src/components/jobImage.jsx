@@ -2,6 +2,7 @@ import React from 'react';
 import {Badge, Card, Col} from 'antd';
 import {Link} from 'react-router-dom';
 import {jobImageConstant} from 'constants/jobImages.constant';
+import {selectScreen} from 'helpers/screen.helper';
 
 
 const JobImage = ({label, count, link = null}) => {
@@ -11,8 +12,8 @@ const JobImage = ({label, count, link = null}) => {
         image = 'job-seeker.png';
 
     const badge = (
-        <Badge count={count}>
-            <Card bordered={false} style={{borderRadius: 10, height: 140, width: 175, textAlign: 'center'}}>
+        <Badge count={count} style={{}}>
+            <Card bordered={false} style={{borderRadius: 0, height: 140, width: 175, textAlign: 'center'}}>
                 <img
                     src={require('assets/images/jobs/' + image)}
                     className='responsive-img'
@@ -26,12 +27,14 @@ const JobImage = ({label, count, link = null}) => {
     );
 
     return (
-        <Col xs={12} sm={6} md={3} style={{margin: 10}}>
-            {link ? (
+        <Col xs={12} sm={6} md={3}>
+            <div>
+                {link ? (
                 <Link to={link}>
                     {badge}
                 </Link>
             ) : badge}
+            </div>
         </Col>
     )
 };

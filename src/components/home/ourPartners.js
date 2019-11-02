@@ -8,9 +8,12 @@ const {Title} = Typography;
 const OurPartners = () => (
     <div className='top-recruiter-col'>
         <div className='center'>
-            <Title>Our Partners</Title>
+            <Title level={3}>Our Partners</Title>
             <br/>
             <Row gutter={48}>
+                <Col xs={0} md={2}>
+                    &nbsp;
+                </Col>
                 {OUR_PARTNERS.map((partner, index) => (
                     <Col
                         xs={0}
@@ -22,11 +25,11 @@ const OurPartners = () => (
                 ))}
 
                 <Col xs={24} md={0}>
-                    <Carousel autoplay dotPosition='left'>
+                    <Carousel autoplay dotPosition='bottom' dots={false}>
                         {OUR_PARTNERS.map((partner, index) => (
-                            <div>
-                                <div  className='center-hv' style={{width: '100vw', textAlign: 'center'}}>
-                                    <img src={partner} alt='' style={{height: 160, padding :'auto'}} />
+                            <div key={index.toString()}>
+                                <div className='center-hv' style={{width: '100vw', textAlign: 'center'}}>
+                                    <img src={partner} alt='' style={{height: 160, padding: 'auto'}}/>
                                 </div>
                             </div>
                         ))}

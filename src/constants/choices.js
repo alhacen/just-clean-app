@@ -120,7 +120,7 @@ export const stateChoices = {
     'Dadra and Nagar Haveli': 'Dadra and Nagar Haveli',
     'Daman and Diu': 'Daman and Diu',
     'Lakshadweep': 'Lakshadweep',
-    'National Capital Territory of Delhi': 'Delhi',
+    'National Capital Territory of Delhi': 'Delhi and Delhi NCR',
     'Puducherry': 'Puducherry',
 };
 

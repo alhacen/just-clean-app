@@ -85,7 +85,7 @@ export const seekerSignUpTForm = (state, initialValues) => {
                 6: 'Above 5'
             },
             kwargs: {
-                placeholder: 'काम का अनुभव'
+                placeholder: 'अनुभव'
             }
         }, {
             label: 'Aadhar Number',
