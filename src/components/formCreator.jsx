@@ -275,7 +275,7 @@ class FormCreator extends Component {
                             break;
 
                         default:
-                            itemInput = <Input {...kwargs} />;
+                            itemInput = <input {...kwargs} />;
                     }
 
                     return (

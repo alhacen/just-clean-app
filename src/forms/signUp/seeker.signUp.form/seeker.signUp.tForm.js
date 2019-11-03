@@ -35,6 +35,7 @@ export const seekerSignUpTForm = (state, initialValues) => {
             type: FORM_ELEMENT.DATE_TIME_PICKER,
             rules: [{required: true},],
             kwargs: {
+                format: 'DD-MM-YYYY',
                 placeholder: 'जन्म की तारीख'
             }
         }, {

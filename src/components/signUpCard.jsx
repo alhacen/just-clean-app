@@ -61,11 +61,26 @@ const SignUpCard = ({subTitle, component: Component, type, history, initialValue
                     data: data
                 });
 
+            console.log('SEEKER DATA', data);
+            console.log(data.seeker.dob);
+            console.log(data.seeker.dob.format('DDMM'));
+
             notification.success({
                 message: 'Created your account',
                 description:
-                'Your account has been created, Sign In to your account'
+                    'Your account has been created, Sign In to your account'
             });
+
+            if (type === 'SEEKER'){
+                const password = data.seeker.dob.format('DDMM');
+
+                notification.success({
+                    message: `Your password is ${password}`,
+                    description: `आपका पासवर्ड ${password} है`,
+                    duration: 0
+                })
+            }
+
             history.push('/welcome/');
         } catch (e) {
             setState(3);
@@ -81,7 +96,8 @@ const SignUpCard = ({subTitle, component: Component, type, history, initialValue
 
     switch (state) {
         case 0:
-            component = <Component initialValues={initialValues} next={() => setState(state + 1)} setData={setData} data={data}/>;
+            component = <Component initialValues={initialValues} next={() => setState(state + 1)} setData={setData}
+                                   data={data}/>;
             break;
         case 1:
             component = <SignUpSelection type={type} setData={setData} next={() => setState(state + 1)} data={data}/>;

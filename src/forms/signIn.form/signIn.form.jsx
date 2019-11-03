@@ -8,7 +8,7 @@ const usernamePattern = /((\d{10})|((?:[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!
 
 class SignInForm extends React.Component {
     state = {
-        loginType: 'O',
+        loginType: 'P',
         otpSendButtonEnabled: true,
         otpSentTo: '',
         sendingOTP: false
@@ -32,22 +32,22 @@ class SignInForm extends React.Component {
 
         return (
             <Form onSubmit={this.handleSubmit} className="login-form" id='sign-in-form'>
-                <Form.Item>
-                    <div>
-                        Sign In With:
-                        &nbsp;&nbsp;&nbsp;
-                        <Radio.Group
-                            defaultValue='O'
-                            onChange={(e) => {
-                                console.log(e);
-                                this.setState({loginType: e.target.value});
-                            }}
-                        >
-                            <Radio value='O'>Otp</Radio>
-                            <Radio value='P'>Password</Radio>
-                        </Radio.Group>
-                    </div>
-                </Form.Item>
+                {/*<Form.Item>*/}
+                {/*    <div>*/}
+                {/*        Sign In With:*/}
+                {/*        &nbsp;&nbsp;&nbsp;*/}
+                {/*        <Radio.Group*/}
+                {/*            defaultValue='O'*/}
+                {/*            onChange={(e) => {*/}
+                {/*                console.log(e);*/}
+                {/*                this.setState({loginType: e.target.value});*/}
+                {/*            }}*/}
+                {/*        >*/}
+                {/*            <Radio value='O'>Otp</Radio>*/}
+                {/*            <Radio value='P'>Password</Radio>*/}
+                {/*        </Radio.Group>*/}
+                {/*    </div>*/}
+                {/*</Form.Item>*/}
                 <Form.Item>
                     <Input.Group>
                         {getFieldDecorator('username', {
@@ -113,7 +113,7 @@ class SignInForm extends React.Component {
                     {getFieldDecorator(isOTPLogin ? 'otp' : 'password', {
                         rules: [{
                             required: true,
-                            min: isOTPLogin? 4 : 6,
+                            min: 4,
                             message: `Please input your ${isOTPLogin ? '4 digit OTP' : 'password'}!`
                         }],
                     })(

@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from 'react';
-import {Row, Col, Typography, Card} from 'antd';
+import {Row, Col, Typography, Card, Modal} from 'antd';
 import {Link} from 'react-router-dom';
 
 import JobSeeker from 'assets/images/job-seeker.png';
@@ -16,9 +16,9 @@ import JobImage from 'components/jobImage';
 const {Title, Text} = Typography;
 
 
-const HomeButton = ({text, background = '#000', hindi, link = '/sign-in/'}) => (
+const HomeButton = ({text, background = '#000', hindi, link = '/sign-in/', onClick}) => (
     <Col xs={24} sm={12} md={6} className='container'>
-        <Link to={link}>
+        <Link to={link} onClick={onClick}>
             <div style={{backgroundColor: background, padding: 10, border: '1px solid #AAA'}} className='center-hv'>
                 <div>
                     <Title level={selectScreen(4, 3)} style={{margin: 0, color: '#FFF'}}>
@@ -32,6 +32,62 @@ const HomeButton = ({text, background = '#000', hindi, link = '/sign-in/'}) => (
         </Link>
     </Col>
 );
+
+const SeekerButton = () => {
+
+    const [open, setOpen] = useState(false);
+
+    return (
+        <>
+            <Modal
+                title="Are you already registered / क्या आप पहले से पंजीकृत हैं"
+                visible={open}
+                onOk={() => setOpen(false)}
+                onCancel={() => setOpen(false)}
+                style={{textAlign: 'center'}}
+            >
+                <Title level={4}>
+                    Are you already registered
+                    <br/>
+                    क्या आप पहले से पंजीकृत हैं
+                </Title>
+
+                <Link to={'/sign-in/'}>
+                    <div style={{backgroundColor: '#EEE', fontSize: '1.5rem', padding: 10, borderRadius: 10}}>
+                        <Text level={3}>
+                            Yes, I am Registered <br/>
+                            हाँ, मैं पंजीकृत हूँ
+                        </Text>
+                    </div>
+                </Link>
+
+                <br/>
+                <br/>
+
+                <Link to={'/seeker/sign-up/'}>
+                    <div style={{backgroundColor: '#EEE', fontSize: '1.5rem', padding: 10, borderRadius: 10}}>
+                        <Text level={3}>
+                            No, please register me <br/>
+                            नहीं, कृपया मुझे पंजीकृत करें
+                        </Text>
+                    </div>
+                </Link>
+
+
+            </Modal>
+            <HomeButton
+                text='Job Seeker'
+                hindi='नौकरी खोजने वालों के लिए'
+                background='#00903D'
+                link='/seeker/sign-up/'
+                onClick={(e) => {
+                    e.preventDefault();
+                    setOpen(true);
+                }}/>
+        </>
+    )
+
+};
 
 function HomeScreen() {
     const setWidth = useState(window.innerWidth)[1];
@@ -63,15 +119,14 @@ function HomeScreen() {
                     <img src={JobSeeker} alt="Job seeker" className="job-seeker-image"/>
 
                     <Row className='container'>
-                        <HomeButton text='Job Seeker' hindi='नौकरी खोजने वालों के लिए' background='#00903D'
-                                    link='/seeker/sign-up/'/>
-                        <HomeButton text='Job Seeker Premium' hindi='नौकरी खोजने वालों के लिए प्रीमियम सर्विस'
-                                    background='#AFE13A'/>
+                        <SeekerButton/>
+                        {/*<HomeButton text='Job Seeker Premium' hindi='नौकरी खोजने वालों के लिए प्रीमियम सर्विस'*/}
+                        {/*            background='#AFE13A'/>*/}
                         <HomeButton text='Partner' hindi='पार्टनरों के लिए' background='#DCC83A'
                                     link='/partner/sign-up/'/>
                         <HomeButton text='Employers' hindi='नियोक्ताओं के लिए' background='#081951'
                                     link='/employer/sign-up/'/>
-                        {/*<HomeButton text='Training' hindi='प्रशिक्षण' background='#414141'/>*/}
+                        <HomeButton text='Training' hindi='प्रशिक्षण' background='#414141'/>
 
                     </Row>
                 </Col>
