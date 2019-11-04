@@ -61,10 +61,6 @@ const SignUpCard = ({subTitle, component: Component, type, history, initialValue
                     data: data
                 });
 
-            console.log('SEEKER DATA', data);
-            console.log(data.seeker.dob);
-            console.log(data.seeker.dob.format('DDMM'));
-
             notification.success({
                 message: 'Created your account',
                 description:
@@ -72,7 +68,7 @@ const SignUpCard = ({subTitle, component: Component, type, history, initialValue
             });
 
             if (type === 'SEEKER'){
-                const password = data.seeker.dob.format('DDMM');
+                const password = data.seeker.dob.substring(0, 5).replace('-', '');
 
                 notification.success({
                     message: `Your password is ${password}`,
@@ -84,7 +80,7 @@ const SignUpCard = ({subTitle, component: Component, type, history, initialValue
             history.push('/welcome/');
         } catch (e) {
             setState(3);
-            console.log('AAA', e.data);
+            console.log('AAA', e);
             notification.error({
                 message: 'An error occurred during signup.',
                 description: e.data.detail

@@ -32,11 +32,12 @@ export const seekerSignUpTForm = (state, initialValues) => {
         }, {
             label: 'Date of birth',
             name: 'dob',
-            type: FORM_ELEMENT.DATE_TIME_PICKER,
+            type: FORM_ELEMENT.MASKED_INPUT,
             rules: [{required: true},],
             kwargs: {
                 format: 'DD-MM-YYYY',
-                placeholder: 'जन्म की तारीख'
+                placeholder: 'DD-MM-YYYY',
+                mask: '11-11-1111'
             }
         }, {
             label: 'Address',

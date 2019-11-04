@@ -1,5 +1,6 @@
 /* eslint-disable */
 import React, {Component} from 'react';
+import MaskedInput from 'antd-mask-input'
 
 import {
     Button,
@@ -272,6 +273,10 @@ class FormCreator extends Component {
                         case FORM_ELEMENT.CASCADER:
                             itemInput = <input type="hidden"/>;
                             extraComponent = <Cascader {...kwargs} />;
+                            break;
+
+                        case FORM_ELEMENT.MASKED_INPUT:
+                            itemInput = <MaskedInput {...kwargs} />;
                             break;
 
                         default:

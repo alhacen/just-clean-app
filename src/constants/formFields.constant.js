@@ -14,6 +14,7 @@ export const FORM_ELEMENT = {
   SWITCH: 'switch',
   HIDDEN: 'hidden',
   CASCADER: 'cascader',
+  MASKED_INPUT: 'masked'
 };
 
 export const SUBMIT_FORM = 'SUBMIT_FORM';
