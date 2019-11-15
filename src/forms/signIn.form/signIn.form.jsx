@@ -37,7 +37,7 @@ class SignInForm extends React.Component {
                 {/*        Sign In With:*/}
                 {/*        &nbsp;&nbsp;&nbsp;*/}
                 {/*        <Radio.Group*/}
-                {/*            defaultValue='O'*/}
+                {/*            defaultValue='P'*/}
                 {/*            onChange={(e) => {*/}
                 {/*                console.log(e);*/}
                 {/*                this.setState({loginType: e.target.value});*/}

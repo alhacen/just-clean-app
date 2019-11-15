@@ -132,7 +132,7 @@ class ForgotPasswordScreen extends React.Component {
                     {getFieldDecorator('password', {
                         rules: [{
                             required: true,
-                            min: 6
+                            min: 4
                         }],
                     })(
                         <Input
