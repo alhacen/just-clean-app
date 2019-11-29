@@ -11,12 +11,18 @@ export const otpSignUpTForm = () => [
         },
     }, {
         label: 'Alternate number',
-        name: 'alternate_mobile_no',
+        name: 'alternate_phone',
         type: FORM_ELEMENT.INPUT,
         rules: [{pattern: /^\d{10}$/, message: 'Not a Valid Indian Phone Number'}],
         kwargs: {
             addonBefore: '+91',
         },
+    },
+    {
+        label: 'Email',
+        name: 'email',
+        type: FORM_ELEMENT.INPUT,
+        rules: [{type: 'email'}],
     },
     // {
     //     label: 'One Time Password',

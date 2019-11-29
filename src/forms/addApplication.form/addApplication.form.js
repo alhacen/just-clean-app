@@ -1,18 +1,28 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import {withRouter} from 'react-router-dom';
 
 import FormCreator from 'components/formCreator';
 import {addApplicationTForm} from 'forms/addApplication.form/addApplication.tForm';
-import {loadSecureUrl} from 'helpers/api/main.api.helper';
+import {loadOpenUrl, loadSecureUrl} from 'helpers/api/main.api.helper';
 import {notification} from 'antd';
 
 
 const AddApplicationForm = ({history, title}) => {
+    const [jobTitles, setJobTitles] = useState([]);
+
+    useEffect(() => {
+        const x = async () => {
+            setJobTitles(await loadOpenUrl('job-titles/'));
+        };
+
+        x();
+    }, []);
+
     const form = (
         // @ts-ignore
         <FormCreator
-            formTemplate={addApplicationTForm}
-            initialValue={async () => ({title: title})}
+            formTemplate={addApplicationTForm('', {title: title, jobTitles})}
+            initialValue={async () => ({title: title, jobTitles})}
             buttonType='block'
             submitButtonText='Next'
             onSubmit={async (objForm) => {

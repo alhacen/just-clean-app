@@ -1,5 +1,5 @@
 import {FORM_ELEMENT} from 'constants/formFields.constant';
-import {educationalQualificationChoices, jobTitleChoices, stateChoices} from 'constants/choices';
+import {educationalQualificationChoices, stateChoices} from 'constants/choices';
 
 export const seekerSignUpTForm = (state, initialValues) => {
     return [
@@ -100,11 +100,20 @@ export const seekerSignUpTForm = (state, initialValues) => {
         }, {
             label: 'Job looking for',
             name: 'job_title',
-            type: FORM_ELEMENT.SELECT,
+            type: initialValues.jobTitles.length !== 0? FORM_ELEMENT.SELECT : FORM_ELEMENT.INPUT,
             rules: [{required: true},],
-            options: jobTitleChoices,
+            options: initialValues.jobTitles? (() => {
+                let x = {};
+                initialValues.jobTitles.map(jobs => {
+                    x[jobs.title] = jobs.title;
+                    return ''
+                });
+
+                return x;
+            })() : [],
             kwargs: {
-                placeholder: 'किस नौकरी के लिए'
+                placeholder: initialValues.jobTitles.length === 0? 'Loading...' : 'किस नौकरी के लिए',
+                disabled: initialValues.jobTitles.length === 0
             }
         }, {
             name: 'partner_code',

@@ -13,7 +13,7 @@ export const passwordSignUpTForm = () => [
         rules: [{required: true}],
     }, {
         label: 'Alternate Number',
-        name: 'alternate_number',
+        name: 'alternate_phone',
         type: FORM_ELEMENT.INPUT,
     }, {
         label: 'Password',

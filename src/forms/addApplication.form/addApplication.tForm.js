@@ -1,20 +1,31 @@
 import {FORM_ELEMENT} from 'constants/formFields.constant';
-import {educationalQualificationChoices, jobTitleChoices} from 'constants/choices';
+import {educationalQualificationChoices} from 'constants/choices';
 
 
 export const addApplicationTForm = (state, initialValues) => [
     {
         label: 'Title',
         name: 'title',
-        type: FORM_ELEMENT.SELECT,
-        rules: [{required: true}],
-        initialValue: initialValues.title,
-        options: jobTitleChoices
+        type: initialValues.jobTitles.length !== 0 ? FORM_ELEMENT.SELECT : FORM_ELEMENT.INPUT,
+        rules: [{required: true},],
+        options: initialValues.jobTitles ? (() => {
+            let x = {};
+            initialValues.jobTitles.map(jobs => {
+                x[jobs.title] = jobs.title;
+                return ''
+            });
+
+            return x;
+        })() : [],
+        kwargs: {
+            placeholder: initialValues.jobTitles.length === 0 ? 'Loading...' : 'Select a job',
+            disabled: initialValues.jobTitles.length === 0
+        }
     }, {
         label: 'Number of vacancies',
         name: 'vacancies',
         type: FORM_ELEMENT.INPUT_NUMBER,
-         rules: [
+        rules: [
             {required: true},
         ],
     }, {

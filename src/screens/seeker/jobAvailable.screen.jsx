@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import {Button, Card, Descriptions, Typography, Empty, Select, Drawer, Input, notification, Skeleton} from 'antd';
 import {withRouter} from 'react-router-dom';
-import {loadSecureUrl} from 'helpers/api/main.api.helper';
+import {loadOpenUrl, loadSecureUrl} from 'helpers/api/main.api.helper';
 import {jobTitleChoices} from 'constants/choices';
 import {selectScreen} from 'helpers/screen.helper';
 
@@ -20,6 +20,16 @@ const JobAvailable = ({history, match}) => {
     const [applyingFor, setApplyingFor] = useState(0);
     const [answer, setAnswer] = useState('');
     const [loading, setLoading] = useState(true);
+    const [jobTitles, setJobTitles] = useState([]);
+
+    useEffect(() => {
+        const x = async () => {
+            setJobTitles(await loadOpenUrl('job-titles/'));
+        };
+
+        x();
+    }, []);
+
 
     useEffect(() => {
         const x = async () => {
@@ -44,20 +54,26 @@ const JobAvailable = ({history, match}) => {
                 <div>
                     <Title level={3}>Job Available</Title>
                     <div>
-                        <Select
-                            style={{width: selectScreen('100%', 300)}}
-                            value={value}
-                            onChange={(value) => setValue(value)}
-                        >
-                            <Select.Option value=''>
-                                According to my preference
-                            </Select.Option>
-                            {Object.keys(jobTitleChoices).map(key => (
-                                <Select.Option value={key}>
-                                    {key}
-                                </Select.Option>
-                            ))}
-                        </Select>
+                        {
+                            jobTitles.length === 0 ? (
+                                'Loading...'
+                            ) : (
+                                <Select
+                                    style={{width: selectScreen('100%', 300)}}
+                                    value={value}
+                                    onChange={(value) => setValue(value)}
+                                >
+                                    <Select.Option value=''>
+                                        According to my preference
+                                    </Select.Option>
+                                    {jobTitles.map(job => (
+                                        <Select.Option value={job.title}>
+                                            {job.title}
+                                        </Select.Option>
+                                    ))}
+                                </Select>
+                            )
+                        }
                     </div>
 
                     <br/>
