@@ -6,6 +6,7 @@ export const addApplicationTForm = (state, initialValues) => [
     {
         label: 'Title',
         name: 'title',
+        initialValue: initialValues.title,
         type: initialValues.jobTitles.length !== 0 ? FORM_ELEMENT.SELECT : FORM_ELEMENT.INPUT,
         rules: [{required: true},],
         options: initialValues.jobTitles ? (() => {

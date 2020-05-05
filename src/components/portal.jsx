@@ -2,11 +2,35 @@ import React, {Suspense} from 'react';
 import {connect} from 'react-redux';
 
 import LoadingScreen from 'screens/loading.screen';
-import {Switch, Route, BrowserRouter} from 'react-router-dom';
+import {Switch, Route, BrowserRouter, withRouter} from 'react-router-dom';
 import NotFoundScreen from 'screens/404.screen';
 import SignInScreen from 'screens/signIn.screen';
 import SideBar from './portalNavigator';
 import {selectScreen} from 'helpers/screen.helper';
+import {useTracker} from 'components/withTracker';
+
+
+const PortalSubside = withRouter(({sideRoutes, extraRoutes, history}) => {
+   useTracker(history);
+
+    return (
+        <Suspense fallback={<LoadingScreen/>}>
+            <Switch>
+                {sideRoutes.map((route, index) => {
+                    return (
+                        <Route key={route.path} exact path={route.path} component={route.screen}/>
+                    )
+                })}
+                {extraRoutes.map((route, index) => {
+                    return (
+                        <Route key={route.path} exact path={route.path} component={route.screen}/>
+                    )
+                })}
+                <Route key='404' component={NotFoundScreen}/>
+            </Switch>
+        </Suspense>
+    );
+});
 
 
 const Portal = ({
@@ -15,7 +39,7 @@ const Portal = ({
                     baseLocation = '/portal/',
                     isAuthenticated,
                     user,
-                    allowedType
+                    allowedType,
                 }) => {
 
     if (!isAuthenticated)
@@ -31,23 +55,7 @@ const Portal = ({
                     paddingLeft: selectScreen(0, 256),
                     transition: '0.4s',
                 }}>
-                    <Suspense fallback={<LoadingScreen/>}>
-                        <Switch>
-                            {sideRoutes.map((route, index) => {
-                                console.log(route, index);
-                                return (
-                                    <Route key={route.path} exact path={route.path} component={route.screen}/>
-                                )
-                            })}
-                            {extraRoutes.map((route, index) => {
-                                console.log(route, index);
-                                return (
-                                    <Route key={route.path} exact path={route.path} component={route.screen}/>
-                                )
-                            })}
-                            <Route key='404' component={NotFoundScreen}/>
-                        </Switch>
-                    </Suspense>
+                    <PortalSubside sideRoutes={sideRoutes} extraRoutes={extraRoutes} />
                 </div>
             </BrowserRouter>
         </div>

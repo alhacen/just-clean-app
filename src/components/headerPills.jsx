@@ -6,11 +6,20 @@ import {Button, Menu} from 'antd';
 const {Item} = Menu;
 
 const HeaderPills = ({isAuthenticated, user, signOut, mode, isConnected}) => (
-    <Menu mode={mode} className='no-border' selectedKeys={[]} style={{border: '0 solid #000', bottom: -10, position: 'relative'}}>
+    <Menu mode={mode} className='no-border' selectedKeys={[]}
+          style={{border: '0 solid #000', bottom: -10, position: 'relative'}}>
         {isAuthenticated ? (
             <Item>
                 <Link to='/sign-in/'>
                     Dashboard Home
+                </Link>
+            </Item>
+        ) : null}
+
+        {isAuthenticated && user.type === 'S' ? (
+            <Item>
+                <Link to='/seeker/payment-details/'>
+                    My Payments / Dash Board Activation Premium
                 </Link>
             </Item>
         ) : null}

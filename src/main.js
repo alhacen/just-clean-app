@@ -1,4 +1,6 @@
 import React, {Suspense, useEffect} from 'react';
+import ReactGA from 'react-ga';
+
 import {connect} from 'react-redux';
 import {Route, Switch, withRouter} from 'react-router-dom';
 
@@ -10,12 +12,18 @@ import Footer from 'components/footer';
 
 import {COMMON_ROUTES} from 'constants/routes/main.routes.constant';
 import {checkUserAction} from 'actions/auth.action';
+import {useTracker} from 'components/withTracker';
 
 
-const Main = ({checkUser}) => {
+ReactGA.initialize('UA-153621354-1');
+ReactGA.pageview(window.location.pathname + window.location.search);
+
+const Main = ({checkUser, history}) => {
     useEffect(() => {
         checkUser();
     });
+
+    useTracker(history);
 
     return (
         <Suspense fallback={<LoadingScreen/>}>

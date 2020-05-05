@@ -8,16 +8,16 @@ const {Title} = Typography;
 
 const AddApplication = ({match}) => {
     let title = null;
-    if(match.params.hash)
+    if (match.params.hash)
         title = atob(match.params.hash);
 
     return (
-        <div className='full-page center-hv'>
+        <div className='full-page center-hv container'>
             <Card style={{maxWidth: '95vw', width: 600}}>
                 <Title>
                     Add Job
                 </Title>
-                <AddApplicationForm title={title} />
+                <AddApplicationForm title={title}/>
             </Card>
         </div>
     );

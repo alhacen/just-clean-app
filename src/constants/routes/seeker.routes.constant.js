@@ -13,7 +13,7 @@ export const SEEKER_COMMON_ROUTES = [
         name: 'Find jobs',
         icon: 'search',
         screen: lazy(() => import('screens/seeker/jobAvailable.screen')),
-    },  {
+    }, {
         path: '/jobs/applied/',
         title: 'Applied jobs',
         name: 'Job Applied',
@@ -27,5 +27,10 @@ export const SEEKER_EXTRA_ROUTES = [
         path: '/jobs/search/:hash/',
         title: 'All jobs',
         screen: lazy(() => import('screens/seeker/jobAvailable.screen')),
+    },
+    {
+        path: '/payment-details/',
+        title: 'Payment Details',
+        screen: lazy(() => import('screens/seeker/payment.screen')),
     },
 ];
