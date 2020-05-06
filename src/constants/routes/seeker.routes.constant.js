@@ -19,6 +19,12 @@ export const SEEKER_COMMON_ROUTES = [
         name: 'Job Applied',
         icon: 'audit',
         screen: lazy(() => import('screens/seeker/jobApplied.screen')),
+    }, {
+        path: '/docs/',
+        title: 'Training / Job Counselling Sessions',
+        name: 'Training / Job Counselling Sessions',
+        icon: 'book',
+        screen: lazy(() => import('screens/seeker/documents.screen')),
     },
 ];
 
